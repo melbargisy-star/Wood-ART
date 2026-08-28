@@ -1,0 +1,2490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+
+<title>Wood ART - فاتورة تصنيع أخشاب</title>
+
+<style>
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+body{
+    background:#eef1f4;
+    color:#17212b;
+    font-family:Arial,Tahoma,sans-serif;
+}
+
+.app{
+    width:100%;
+    max-width:950px;
+    margin:auto;
+}
+
+.header{
+    background:#17324d;
+    color:white;
+    text-align:center;
+    padding:11px 5px;
+}
+
+.header h1{
+    margin:0;
+    font-size:24px;
+}
+
+.header p{
+    margin:4px 0 0;
+    font-size:12px;
+}
+
+.card{
+    background:white;
+    margin:4px;
+    padding:7px;
+    border-radius:9px;
+    box-shadow:0 2px 6px rgba(0,0,0,.07);
+}
+
+.section-title{
+    color:#17324d;
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+label{
+    display:block;
+    color:#66737d;
+    font-size:10px;
+    margin-bottom:3px;
+}
+
+input{
+    width:100%;
+    height:35px;
+    border:1px solid #cbd4db;
+    border-radius:6px;
+    background:white;
+    padding:3px;
+    outline:none;
+    font-size:11px;
+    text-align:center;
+}
+
+input:focus{
+    border-color:#17324d;
+}
+
+.customer{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:6px;
+}
+
+.invoice-number{
+    background:#f1f6fa;
+    font-weight:bold;
+}
+
+/* LOGIN */
+
+.account{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+}
+
+.user-info{
+    font-size:10px;
+    color:#555;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.login-btn,
+.logout-btn{
+    border:0;
+    border-radius:6px;
+    height:36px;
+    padding:0 12px;
+    font-weight:bold;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.login-btn{
+    background:#4285f4;
+    color:white;
+}
+
+.logout-btn{
+    background:#c62828;
+    color:white;
+}
+
+/* TABLE */
+
+.table-wrapper{
+    width:100%;
+    overflow:hidden;
+}
+
+.wood-table{
+    width:100%;
+    min-width:0;
+    border-collapse:collapse;
+    table-layout:fixed;
+    direction:rtl;
+}
+
+.wood-table th{
+    height:34px;
+    padding:1px;
+    border:1px solid #aebbc5;
+    background:#dcecf7;
+    color:#17324d;
+    font-size:8px;
+    text-align:center;
+    vertical-align:middle;
+    line-height:1.1;
+}
+
+.wood-table td{
+    height:35px;
+    padding:1px;
+    border:1px solid #cbd5dc;
+    font-size:8px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.wood-table td input{
+    width:100%;
+    height:28px;
+    border:0;
+    border-radius:3px;
+    background:#f8fafb;
+    padding:1px;
+    font-size:8px;
+    min-width:0;
+}
+
+.wood-table td input:focus{
+    background:#fff;
+    outline:1px solid #17324d;
+}
+
+.row-number{
+    background:#f0f3f5;
+    font-weight:bold;
+}
+
+.col-number{width:4%}
+.col-length{width:8%}
+.col-width{width:8%}
+.col-thickness{width:8%}
+.col-quantity{width:7%}
+.col-volume{width:11%}
+.col-price{width:11%}
+.col-total{width:11%}
+.col-notes{width:25%}
+.col-delete{width:7%}
+
+.delete-row{
+    width:100%;
+    height:27px;
+    border:0;
+    border-radius:4px;
+    background:#c62828;
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.add-row{
+    width:100%;
+    height:37px;
+    margin-top:6px;
+    border:0;
+    border-radius:6px;
+    background:#17324d;
+    color:white;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* SUMMARY */
+
+.summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+    margin-top:6px;
+}
+
+.summary-box{
+    background:#f7f9fa;
+    border:1px solid #d6dee4;
+    border-radius:6px;
+    padding:7px;
+    text-align:center;
+}
+
+.summary-title{
+    color:#66737d;
+    font-size:9px;
+}
+
+.summary-value{
+    margin-top:3px;
+    direction:ltr;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.manufacturing-box{
+    background:#fff8e7;
+    border-color:#ead79d;
+}
+
+.material-row{
+    display:grid;
+    grid-template-columns:1fr 100px 38px;
+    gap:5px;
+    margin-bottom:5px;
+}
+
+.material-row button{
+    border:0;
+    border-radius:5px;
+    background:#c62828;
+    color:white;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.final-total{
+    background:#e7f1fb;
+    border-color:#bdd3e7;
+}
+
+.final-total .summary-value{
+    color:#1565c0;
+    font-size:17px;
+}
+
+.payment{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+    margin-top:6px;
+}
+
+.payment-box{
+    padding:7px;
+    border-radius:6px;
+    text-align:center;
+}
+
+.paid-box{
+    background:#edf6ff;
+}
+
+.remaining-box{
+    background:#fff2e7;
+}
+
+.remaining-value{
+    margin-top:4px;
+    color:#d35400;
+    direction:ltr;
+    font-size:15px;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+
+.buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+}
+
+.btn{
+    min-height:40px;
+    border:0;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.btn-save{
+    background:#2e7d32;
+    color:white;
+}
+
+.btn-new{
+    background:#e2e7eb;
+    color:#17212b;
+}
+
+.btn-print{
+    background:#1565c0;
+    color:white;
+}
+
+.btn-share{
+    background:#7b1fa2;
+    color:white;
+}
+
+/* EDIT */
+
+.edit-badge{
+    display:none;
+    background:#fff3cd;
+    color:#856404;
+    border:1px solid #ffe69c;
+    padding:6px;
+    border-radius:6px;
+    margin-bottom:6px;
+    text-align:center;
+    font-size:10px;
+    font-weight:bold;
+}
+
+.edit-badge.show{
+    display:block;
+}
+
+/* INVOICES */
+
+.invoice-list{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.invoice-item{
+    border:1px solid #d6dee4;
+    border-radius:7px;
+    padding:7px;
+    background:#f9fafb;
+}
+
+.invoice-info{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:4px;
+    font-size:10px;
+    margin-bottom:6px;
+}
+
+.invoice-info div{
+    background:white;
+    border-radius:4px;
+    padding:5px;
+    text-align:center;
+}
+
+.invoice-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px;
+}
+
+.invoice-actions button{
+    height:34px;
+    border:0;
+    border-radius:5px;
+    color:white;
+    font-weight:bold;
+    font-size:10px;
+}
+
+.open-invoice{
+    background:#1565c0;
+}
+
+.delete-invoice{
+    background:#c62828;
+}
+
+.no-invoices{
+    text-align:center;
+    color:#777;
+    padding:14px;
+    font-size:11px;
+}
+
+.sync-status{
+    text-align:center;
+    font-size:10px;
+    padding:5px;
+    color:#555;
+}
+
+@media(max-width:600px){
+
+    .card{
+        margin:3px;
+        padding:6px;
+    }
+
+    .customer{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .customer>div:first-child{
+        grid-column:1/-1;
+    }
+
+    .wood-table th{
+        font-size:7px;
+        height:31px;
+    }
+
+    .wood-table td{
+        font-size:7px;
+        height:32px;
+    }
+
+    .wood-table td input{
+        height:26px;
+        font-size:7px;
+    }
+
+    .delete-row{
+        height:25px;
+        font-size:13px;
+    }
+
+    .material-row{
+        grid-template-columns:1fr 85px 34px;
+    }
+
+}
+
+@media(max-width:380px){
+
+    .wood-table th{
+        font-size:6px;
+    }
+
+    .wood-table td{
+        font-size:6px;
+    }
+
+    .wood-table td input{
+        font-size:6px;
+    }
+
+}
+
+@media print{
+
+    body{
+        background:white;
+    }
+
+    .no-print{
+        display:none!important;
+    }
+
+    .card{
+        box-shadow:none;
+        margin:0;
+    }
+
+    .header{
+        print-color-adjust:exact;
+        -webkit-print-color-adjust:exact;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="header">
+    <h1>Wood ART</h1>
+    <p>فاتورة تصنيع أخشاب</p>
+</div>
+
+<!-- ACCOUNT -->
+
+<div class="card no-print">
+
+    <div class="account">
+
+        <div id="userInfo" class="user-info">
+            لم يتم تسجيل الدخول
+        </div>
+
+        <button id="loginBtn" class="login-btn">
+            🔐 تسجيل الدخول بحساب Google
+        </button>
+
+        <button id="logoutBtn"
+                class="logout-btn"
+                style="display:none">
+            تسجيل الخروج
+        </button>
+
+    </div>
+
+    <div id="syncStatus" class="sync-status">
+        ☁️ يجب تسجيل الدخول لمزامنة الفواتير
+    </div>
+
+</div>
+
+
+<!-- DATA -->
+
+<div class="card">
+
+    <div class="section-title">
+        📋 بيانات الفاتورة
+    </div>
+
+    <div id="editBadge" class="edit-badge">
+        ✏️ أنت الآن تعدّل فاتورة محفوظة
+    </div>
+
+    <div class="customer">
+
+        <div>
+            <label>اسم العميل</label>
+            <input id="client" type="text" placeholder="اسم العميل">
+        </div>
+
+        <div>
+            <label>رقم الفاتورة</label>
+            <input id="invoiceNumber"
+                   class="invoice-number"
+                   type="text"
+                   readonly>
+        </div>
+
+        <div>
+            <label>التاريخ</label>
+            <input id="date" type="date">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- WOOD -->
+
+<div class="card">
+
+    <div class="section-title">
+        🪵 حساب الأخشاب
+    </div>
+
+    <div class="table-wrapper">
+
+        <table class="wood-table">
+
+            <colgroup>
+                <col class="col-number">
+                <col class="col-length">
+                <col class="col-width">
+                <col class="col-thickness">
+                <col class="col-quantity">
+                <col class="col-volume">
+                <col class="col-price">
+                <col class="col-total">
+                <col class="col-notes">
+                <col class="col-delete">
+            </colgroup>
+
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>الطول<br>سم</th>
+                    <th>العرض<br>سم</th>
+                    <th>السمك<br>سم</th>
+                    <th>العدد</th>
+                    <th>الحجم<br>م³</th>
+                    <th>السعر<br>/م³</th>
+                    <th>الإجمالي</th>
+                    <th>ملاحظات</th>
+                    <th>حذف</th>
+                </tr>
+            </thead>
+
+            <tbody id="woodBody"></tbody>
+
+        </table>
+
+    </div>
+
+    <button id="addRow" class="add-row no-print">
+        ＋ إضافة صف
+    </button>
+
+    <div class="summary">
+
+        <div class="summary-box">
+            <div class="summary-title">إجمالي الحجم</div>
+            <div id="totalVolume" class="summary-value">
+                0.000000 م³
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-title">إجمالي الأخشاب</div>
+            <div id="woodTotal" class="summary-value">
+                0.00 جنيه
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MANUFACTURING -->
+
+<div class="card">
+
+    <div class="section-title">
+        🛠️ حساب التصنيع
+    </div>
+
+    <div class="summary-box manufacturing-box">
+
+        <label>قيمة التصنيع</label>
+
+        <input id="manufacturing"
+               inputmode="decimal"
+               placeholder="0.00">
+
+    </div>
+
+</div>
+
+
+<!-- OTHER MATERIALS -->
+
+<div class="card">
+
+    <div class="section-title">
+        🧰 خامات أخرى
+    </div>
+
+    <div id="materials"></div>
+
+    <button id="addMaterial"
+            class="add-row no-print">
+        ＋ إضافة خامة
+    </button>
+
+    <div class="summary-box" style="margin-top:6px">
+
+        <div class="summary-title">
+            إجمالي الخامات الأخرى
+        </div>
+
+        <div id="materialsTotal" class="summary-value">
+            0.00 جنيه
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOTAL -->
+
+<div class="card">
+
+    <div class="summary">
+
+        <div class="summary-box">
+            <div class="summary-title">إجمالي الأخشاب</div>
+            <div id="woodTotal2" class="summary-value">
+                0.00 جنيه
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-title">التصنيع</div>
+            <div id="manufacturingTotal" class="summary-value">
+                0.00 جنيه
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-title">خامات أخرى</div>
+            <div id="materialsTotal2" class="summary-value">
+                0.00 جنيه
+            </div>
+        </div>
+
+        <div class="summary-box final-total">
+            <div class="summary-title">الإجمالي النهائي</div>
+            <div id="finalTotal" class="summary-value">
+                0.00 جنيه
+            </div>
+        </div>
+
+    </div>
+
+    <div class="payment">
+
+        <div class="payment-box paid-box">
+
+            <label>💵 المدفوع</label>
+
+            <input id="paid"
+                   inputmode="decimal"
+                   placeholder="0.00">
+
+        </div>
+
+        <div class="payment-box remaining-box">
+
+            <label>💰 المتبقي</label>
+
+            <div id="remaining"
+                 class="remaining-value">
+                0.00 جنيه
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BUTTONS -->
+
+<div class="card no-print">
+
+    <div class="buttons">
+
+        <button id="save"
+                class="btn btn-save">
+            ☁️ حفظ في السحابة
+        </button>
+
+        <button id="newInvoice"
+                class="btn btn-new">
+            ＋ فاتورة جديدة
+        </button>
+
+        <button id="print"
+                class="btn btn-print">
+            🖨️ طباعة / PDF
+        </button>
+
+        <button id="share"
+                class="btn btn-share">
+            📤 مشاركة
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SAVED -->
+
+<div class="card no-print">
+
+    <div class="section-title">
+        ☁️ فواتيري المحفوظة
+    </div>
+
+    <input id="searchInvoices"
+           type="text"
+           placeholder="🔍 بحث باسم العميل أو رقم الفاتورة">
+
+    <div id="invoiceList"
+         class="invoice-list"
+         style="margin-top:7px">
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithRedirect,
+    getRedirectResult,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    setDoc,
+    doc,
+    getDocs,
+    deleteDoc,
+    query,
+    where,
+    orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyBwr4Z0k0G13g-iRnAKpQfXhbugsU20kvg",
+
+    authDomain:
+        "wood-art-8a7d6.firebaseapp.com",
+
+    projectId:
+        "wood-art-8a7d6",
+
+    storageBucket:
+        "wood-art-8a7d6.firebasestorage.app",
+
+    messagingSenderId:
+        "362506972779",
+
+    appId:
+        "1:362506972779:web:d3bd442a754bb832cdcb2e"
+
+};
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+const db =
+    getFirestore(app);
+
+const provider =
+    new GoogleAuthProvider();
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const woodBody =
+    document.getElementById("woodBody");
+
+const client =
+    document.getElementById("client");
+
+const invoiceNumber =
+    document.getElementById("invoiceNumber");
+
+const date =
+    document.getElementById("date");
+
+const manufacturing =
+    document.getElementById("manufacturing");
+
+const paid =
+    document.getElementById("paid");
+
+const materials =
+    document.getElementById("materials");
+
+const invoiceList =
+    document.getElementById("invoiceList");
+
+const searchInvoices =
+    document.getElementById("searchInvoices");
+
+const editBadge =
+    document.getElementById("editBadge");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+const userInfo =
+    document.getElementById("userInfo");
+
+const syncStatus =
+    document.getElementById("syncStatus");
+
+
+let currentUser = null;
+
+let editingInvoiceId = null;
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function today(){
+
+    return new Date()
+        .toISOString()
+        .slice(0,10);
+
+}
+
+
+function num(value){
+
+    if(
+        value === null ||
+        value === undefined ||
+        value === ""
+    ){
+        return 0;
+    }
+
+    return parseFloat(
+        String(value)
+        .replace(",",".")
+    ) || 0;
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+loginBtn.addEventListener(
+    "click",
+    async function(){
+
+        try{
+
+            syncStatus.textContent =
+                "🔐 جاري تسجيل الدخول...";
+
+            await signInWithRedirect(
+                auth,
+                provider
+            );
+
+        }catch(error){
+
+            console.error(error);
+
+            syncStatus.textContent =
+                "❌ حدث خطأ أثناء تسجيل الدخول";
+
+            alert(
+                "تعذر تسجيل الدخول بحساب Google"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+logoutBtn.addEventListener(
+    "click",
+    async function(){
+
+        await signOut(auth);
+
+        currentUser = null;
+
+        userInfo.textContent =
+            "لم يتم تسجيل الدخول";
+
+        loginBtn.style.display =
+            "block";
+
+        logoutBtn.style.display =
+            "none";
+
+        syncStatus.textContent =
+            "☁️ تم تسجيل الخروج";
+
+        invoiceList.innerHTML =
+            `<div class="no-invoices">
+                سجل الدخول لعرض فواتيرك
+            </div>`;
+
+    }
+);
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async function(user){
+
+        currentUser = user;
+
+        if(user){
+
+            userInfo.textContent =
+                "👤 " +
+                (user.displayName ||
+                 user.email ||
+                 "حساب Google");
+
+            loginBtn.style.display =
+                "none";
+
+            logoutBtn.style.display =
+                "block";
+
+            syncStatus.textContent =
+                "☁️ متصل بالسحابة";
+
+            await loadInvoices();
+
+            if(
+                !invoiceNumber.value
+            ){
+                await prepareNewInvoice();
+            }
+
+        }else{
+
+            userInfo.textContent =
+                "لم يتم تسجيل الدخول";
+
+            loginBtn.style.display =
+                "block";
+
+            logoutBtn.style.display =
+                "none";
+
+            syncStatus.textContent =
+                "☁️ سجل الدخول لمزامنة الفواتير";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   REDIRECT RESULT
+===================================================== */
+
+getRedirectResult(auth)
+.catch(
+    function(error){
+
+        if(error){
+
+            console.error(
+                "Google redirect:",
+                error
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CREATE ROW
+===================================================== */
+
+function createRow(data = {}){
+
+    const row =
+        document.createElement("tr");
+
+    row.innerHTML = `
+
+        <td class="row-number"></td>
+
+        <td>
+            <input class="length"
+                   inputmode="decimal"
+                   value="${escapeHTML(data.length || "")}">
+        </td>
+
+        <td>
+            <input class="width"
+                   inputmode="decimal"
+                   value="${escapeHTML(data.width || "")}">
+        </td>
+
+        <td>
+            <input class="thickness"
+                   inputmode="decimal"
+                   value="${escapeHTML(data.thickness || "")}">
+        </td>
+
+        <td>
+            <input class="quantity"
+                   inputmode="decimal"
+                   value="${escapeHTML(data.quantity || "")}">
+        </td>
+
+        <td class="volume">
+            0.000000
+        </td>
+
+        <td>
+            <input class="price"
+                   inputmode="decimal"
+                   value="${escapeHTML(data.price || "")}">
+        </td>
+
+        <td class="row-total">
+            0.00
+        </td>
+
+        <td>
+            <input class="note"
+                   placeholder="ملاحظات"
+                   value="${escapeHTML(data.note || "")}">
+        </td>
+
+        <td>
+            <button type="button"
+                    class="delete-row">
+                ×
+            </button>
+        </td>
+
+    `;
+
+    woodBody.appendChild(row);
+
+    connectRow(row);
+
+    row.querySelector(".delete-row")
+        .addEventListener(
+            "click",
+            () => deleteRow(row)
+        );
+
+    calculate();
+
+}
+
+
+/* =====================================================
+   CONNECT ROW
+===================================================== */
+
+function connectRow(row){
+
+    const inputs =
+        row.querySelectorAll("input");
+
+    inputs.forEach(
+        function(input,index){
+
+            input.addEventListener(
+                "input",
+                calculate
+            );
+
+            input.addEventListener(
+                "keydown",
+                function(event){
+
+                    if(
+                        event.key !== "Enter"
+                    ){
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    if(
+                        index <
+                        inputs.length - 1
+                    ){
+
+                        inputs[
+                            index + 1
+                        ].focus();
+
+                    }else{
+
+                        createRow();
+
+                        const rows =
+                            woodBody
+                            .querySelectorAll("tr");
+
+                        rows[
+                            rows.length - 1
+                        ]
+                        .querySelector(".length")
+                        .focus();
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   DELETE ROW
+===================================================== */
+
+function deleteRow(row){
+
+    const rows =
+        woodBody.querySelectorAll("tr");
+
+    if(rows.length === 1){
+
+        row.querySelector(".length").value="";
+        row.querySelector(".width").value="";
+        row.querySelector(".thickness").value="";
+        row.querySelector(".quantity").value="";
+        row.querySelector(".price").value="";
+        row.querySelector(".note").value="";
+
+    }else{
+
+        row.remove();
+
+    }
+
+    calculate();
+
+}
+
+
+/* =====================================================
+   ADD ROW
+===================================================== */
+
+document
+.getElementById("addRow")
+.addEventListener(
+    "click",
+    function(){
+
+        createRow();
+
+        const rows =
+            woodBody.querySelectorAll("tr");
+
+        rows[
+            rows.length - 1
+        ]
+        .querySelector(".length")
+        .focus();
+
+    }
+);
+
+
+/* =====================================================
+   CALCULATE
+===================================================== */
+
+function calculate(){
+
+    let totalVolume = 0;
+
+    let woodTotal = 0;
+
+    const rows =
+        woodBody.querySelectorAll("tr");
+
+    rows.forEach(
+        function(row,index){
+
+            row.querySelector(
+                ".row-number"
+            ).textContent =
+                index + 1;
+
+            const length =
+                num(
+                    row.querySelector(".length").value
+                );
+
+            const width =
+                num(
+                    row.querySelector(".width").value
+                );
+
+            const thickness =
+                num(
+                    row.querySelector(".thickness").value
+                );
+
+            const quantity =
+                num(
+                    row.querySelector(".quantity").value
+                );
+
+            const price =
+                num(
+                    row.querySelector(".price").value
+                );
+
+            const volume =
+                (
+                    length *
+                    width *
+                    thickness *
+                    quantity
+                ) / 1000000;
+
+            const total =
+                volume * price;
+
+            row.querySelector(".volume")
+                .textContent =
+                volume.toFixed(6);
+
+            row.querySelector(".row-total")
+                .textContent =
+                total.toFixed(2);
+
+            totalVolume += volume;
+
+            woodTotal += total;
+
+        }
+    );
+
+
+    let materialsTotal = 0;
+
+    materials
+    .querySelectorAll(".material-price")
+    .forEach(
+        input => {
+
+            materialsTotal +=
+                num(input.value);
+
+        }
+    );
+
+
+    const manufacturingValue =
+        num(manufacturing.value);
+
+    const finalTotal =
+        woodTotal +
+        manufacturingValue +
+        materialsTotal;
+
+    const paidValue =
+        num(paid.value);
+
+    const remaining =
+        finalTotal - paidValue;
+
+
+    document.getElementById("totalVolume")
+        .textContent =
+        totalVolume.toFixed(6)
+        + " م³";
+
+    document.getElementById("woodTotal")
+        .textContent =
+        woodTotal.toFixed(2)
+        + " جنيه";
+
+    document.getElementById("woodTotal2")
+        .textContent =
+        woodTotal.toFixed(2)
+        + " جنيه";
+
+    document.getElementById("manufacturingTotal")
+        .textContent =
+        manufacturingValue.toFixed(2)
+        + " جنيه";
+
+    document.getElementById("materialsTotal")
+        .textContent =
+        materialsTotal.toFixed(2)
+        + " جنيه";
+
+    document.getElementById("materialsTotal2")
+        .textContent =
+        materialsTotal.toFixed(2)
+        + " جنيه";
+
+    document.getElementById("finalTotal")
+        .textContent =
+        finalTotal.toFixed(2)
+        + " جنيه";
+
+    document.getElementById("remaining")
+        .textContent =
+        Math.max(
+            0,
+            remaining
+        ).toFixed(2)
+        + " جنيه";
+
+
+    return {
+        totalVolume,
+        woodTotal,
+        manufacturingValue,
+        materialsTotal,
+        finalTotal,
+        paidValue,
+        remaining
+    };
+
+}
+
+
+/* =====================================================
+   COLLECT WOOD
+===================================================== */
+
+function collectWoodRows(){
+
+    return Array.from(
+        woodBody.querySelectorAll("tr")
+    )
+    .map(
+        row => ({
+
+            length:
+                row.querySelector(".length").value,
+
+            width:
+                row.querySelector(".width").value,
+
+            thickness:
+                row.querySelector(".thickness").value,
+
+            quantity:
+                row.querySelector(".quantity").value,
+
+            price:
+                row.querySelector(".price").value,
+
+            note:
+                row.querySelector(".note").value
+
+        })
+    );
+
+}
+
+
+/* =====================================================
+   COLLECT MATERIALS
+===================================================== */
+
+function collectMaterials(){
+
+    return Array.from(
+        materials.querySelectorAll(
+            ".material-row"
+        )
+    )
+    .map(
+        row => ({
+
+            name:
+                row.querySelector(
+                    ".material-name"
+                ).value,
+
+            price:
+                row.querySelector(
+                    ".material-price"
+                ).value
+
+        })
+    );
+
+}
+
+
+/* =====================================================
+   COLLECT INVOICE
+===================================================== */
+
+function collectInvoice(){
+
+    const totals =
+        calculate();
+
+    return {
+
+        number:
+            invoiceNumber.value,
+
+        client:
+            client.value,
+
+        date:
+            date.value,
+
+        rows:
+            collectWoodRows(),
+
+        manufacturing:
+            manufacturing.value,
+
+        materials:
+            collectMaterials(),
+
+        paid:
+            paid.value,
+
+        totalVolume:
+            totals.totalVolume,
+
+        woodTotal:
+            totals.woodTotal,
+
+        manufacturingTotal:
+            totals.manufacturingValue,
+
+        materialsTotal:
+            totals.materialsTotal,
+
+        finalTotal:
+            totals.finalTotal,
+
+        remaining:
+            Math.max(
+                0,
+                totals.remaining
+            ),
+
+        updatedAt:
+            new Date().toISOString()
+
+    };
+
+}
+
+
+/* =====================================================
+   SAVE TO FIRESTORE
+===================================================== */
+
+document
+.getElementById("save")
+.addEventListener(
+    "click",
+    async function(){
+
+        if(!currentUser){
+
+            alert(
+                "🔐 يجب تسجيل الدخول بحساب Google أولاً"
+            );
+
+            return;
+
+        }
+
+
+        const invoice =
+            collectInvoice();
+
+
+        try{
+
+            syncStatus.textContent =
+                "☁️ جاري حفظ الفاتورة...";
+
+
+            if(editingInvoiceId){
+
+                const invoiceRef =
+                    doc(
+                        db,
+                        "users",
+                        currentUser.uid,
+                        "invoices",
+                        editingInvoiceId
+                    );
+
+                await setDoc(
+                    invoiceRef,
+                    invoice
+                );
+
+                alert(
+                    "✅ تم تحديث الفاتورة رقم "
+                    + invoice.number
+                );
+
+            }else{
+
+                const invoiceRef =
+                    await addDoc(
+                        collection(
+                            db,
+                            "users",
+                            currentUser.uid,
+                            "invoices"
+                        ),
+                        invoice
+                    );
+
+                editingInvoiceId =
+                    invoiceRef.id;
+
+                alert(
+                    "✅ تم حفظ الفاتورة في السحابة"
+                );
+
+            }
+
+
+            editBadge.classList.add(
+                "show"
+            );
+
+            syncStatus.textContent =
+                "☁️ تم الحفظ بنجاح";
+
+            await loadInvoices();
+
+        }catch(error){
+
+            console.error(error);
+
+            syncStatus.textContent =
+                "❌ فشل الحفظ";
+
+            alert(
+                "حدث خطأ أثناء الحفظ:\n"
+                + error.message
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   LOAD INVOICES
+===================================================== */
+
+async function loadInvoices(){
+
+    if(!currentUser){
+        return;
+    }
+
+    try{
+
+        const invoicesRef =
+            collection(
+                db,
+                "users",
+                currentUser.uid,
+                "invoices"
+            );
+
+        const q =
+            query(
+                invoicesRef,
+                orderBy(
+                    "updatedAt",
+                    "desc"
+                )
+            );
+
+        const snapshot =
+            await getDocs(q);
+
+        const invoices =
+            snapshot.docs.map(
+                docItem => ({
+
+                    id:
+                        docItem.id,
+
+                    ...docItem.data()
+
+                })
+            );
+
+        renderInvoices(
+            invoices
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        syncStatus.textContent =
+            "❌ تعذر تحميل الفواتير";
+
+        alert(
+            "تعذر تحميل الفواتير.\n"
+            + error.message
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   OPEN INVOICE
+===================================================== */
+
+async function loadInvoice(id){
+
+    if(!currentUser){
+        return;
+    }
+
+    try{
+
+        const invoicesRef =
+            collection(
+                db,
+                "users",
+                currentUser.uid,
+                "invoices"
+            );
+
+        const snapshot =
+            await getDocs(
+                query(
+                    invoicesRef,
+                    where(
+                        "__name__",
+                        "==",
+                        id
+                    )
+                )
+            );
+
+        if(snapshot.empty){
+
+            alert(
+                "الفاتورة غير موجودة"
+            );
+
+            return;
+
+        }
+
+        const invoice =
+            snapshot.docs[0].data();
+
+        editingInvoiceId =
+            id;
+
+        invoiceNumber.value =
+            invoice.number || "";
+
+        client.value =
+            invoice.client || "";
+
+        date.value =
+            invoice.date || today();
+
+        manufacturing.value =
+            invoice.manufacturing || "";
+
+        paid.value =
+            invoice.paid || "";
+
+
+        woodBody.innerHTML = "";
+
+        if(
+            invoice.rows &&
+            invoice.rows.length
+        ){
+
+            invoice.rows.forEach(
+                row => createRow(row)
+            );
+
+        }else{
+
+            createRow();
+
+        }
+
+
+        materials.innerHTML = "";
+
+        if(
+            invoice.materials &&
+            invoice.materials.length
+        ){
+
+            invoice.materials.forEach(
+                item => createMaterial(item)
+            );
+
+        }
+
+
+        calculate();
+
+        editBadge.classList.add(
+            "show"
+        );
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "تعذر فتح الفاتورة"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DELETE INVOICE
+===================================================== */
+
+async function deleteInvoice(id){
+
+    if(!currentUser){
+        return;
+    }
+
+    const confirmed =
+        confirm(
+            "هل تريد حذف هذه الفاتورة نهائيًا من السحابة؟"
+        );
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        await deleteDoc(
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "invoices",
+                id
+            )
+        );
+
+
+        if(
+            editingInvoiceId === id
+        ){
+
+            editingInvoiceId =
+                null;
+
+            prepareNewInvoice();
+
+        }
+
+
+        await loadInvoices();
+
+        alert(
+            "🗑️ تم حذف الفاتورة"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "تعذر حذف الفاتورة"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER INVOICES
+===================================================== */
+
+function renderInvoices(invoices){
+
+    const search =
+        searchInvoices.value
+        .trim()
+        .toLowerCase();
+
+
+    const filtered =
+        invoices.filter(
+            invoice =>
+
+                String(
+                    invoice.client || ""
+                )
+                .toLowerCase()
+                .includes(search)
+
+                ||
+
+                String(
+                    invoice.number || ""
+                )
+                .toLowerCase()
+                .includes(search)
+        );
+
+
+    invoiceList.innerHTML = "";
+
+
+    if(!filtered.length){
+
+        invoiceList.innerHTML =
+            `<div class="no-invoices">
+                لا توجد فواتير محفوظة
+            </div>`;
+
+        return;
+
+    }
+
+
+    filtered.forEach(
+        invoice => {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "invoice-item";
+
+
+            item.innerHTML = `
+
+                <div class="invoice-info">
+
+                    <div>
+                        <strong>رقم</strong><br>
+                        ${escapeHTML(
+                            invoice.number || "-"
+                        )}
+                    </div>
+
+                    <div>
+                        <strong>العميل</strong><br>
+                        ${escapeHTML(
+                            invoice.client || "-"
+                        )}
+                    </div>
+
+                    <div>
+                        <strong>الإجمالي</strong><br>
+                        ${num(
+                            invoice.finalTotal
+                        ).toFixed(2)}
+                        جنيه
+                    </div>
+
+                </div>
+
+                <div class="invoice-info">
+
+                    <div>
+                        التاريخ<br>
+                        ${escapeHTML(
+                            invoice.date || "-"
+                        )}
+                    </div>
+
+                    <div>
+                        المدفوع<br>
+                        ${num(
+                            invoice.paid
+                        ).toFixed(2)}
+                        جنيه
+                    </div>
+
+                    <div>
+                        المتبقي<br>
+                        ${num(
+                            invoice.remaining
+                        ).toFixed(2)}
+                        جنيه
+                    </div>
+
+                </div>
+
+                <div class="invoice-actions">
+
+                    <button class="open-invoice">
+                        ✏️ فتح وتعديل
+                    </button>
+
+                    <button class="delete-invoice">
+                        🗑️ حذف
+                    </button>
+
+                </div>
+            `;
+
+
+            item.querySelector(
+                ".open-invoice"
+            )
+            .addEventListener(
+                "click",
+                () => loadInvoice(invoice.id)
+            );
+
+
+            item.querySelector(
+                ".delete-invoice"
+            )
+            .addEventListener(
+                "click",
+                () => deleteInvoice(invoice.id)
+            );
+
+
+            invoiceList.appendChild(item);
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MATERIAL
+===================================================== */
+
+function createMaterial(data = {}){
+
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "material-row";
+
+    row.innerHTML = `
+
+        <input class="material-name"
+               placeholder="اسم الخامة"
+               value="${escapeHTML(
+                   data.name || ""
+               )}">
+
+        <input class="material-price"
+               inputmode="decimal"
+               placeholder="القيمة"
+               value="${escapeHTML(
+                   data.price || ""
+               )}">
+
+        <button type="button">
+            ×
+        </button>
+
+    `;
+
+
+    materials.appendChild(row);
+
+
+    row.querySelector(
+        ".material-price"
+    )
+    .addEventListener(
+        "input",
+        calculate
+    );
+
+
+    row.querySelector(
+        "button"
+    )
+    .addEventListener(
+        "click",
+        function(){
+
+            row.remove();
+
+            calculate();
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   ADD MATERIAL
+===================================================== */
+
+document
+.getElementById("addMaterial")
+.addEventListener(
+    "click",
+    function(){
+
+        createMaterial();
+
+        const rows =
+            materials.querySelectorAll(
+                ".material-row"
+            );
+
+        rows[
+            rows.length - 1
+        ]
+        .querySelector(
+            ".material-name"
+        )
+        .focus();
+
+    }
+);
+
+
+/* =====================================================
+   NEW INVOICE
+===================================================== */
+
+async function prepareNewInvoice(){
+
+    editingInvoiceId =
+        null;
+
+    editBadge.classList.remove(
+        "show"
+    );
+
+    client.value = "";
+
+    date.value =
+        today();
+
+    manufacturing.value = "";
+
+    paid.value = "";
+
+    materials.innerHTML = "";
+
+    woodBody.innerHTML = "";
+
+    let nextNumber = 1;
+
+
+    if(currentUser){
+
+        try{
+
+            const snapshot =
+                await getDocs(
+                    collection(
+                        db,
+                        "users",
+                        currentUser.uid,
+                        "invoices"
+                    )
+                );
+
+            snapshot.forEach(
+                documentItem => {
+
+                    const n =
+                        parseInt(
+                            documentItem
+                            .data()
+                            .number
+                        );
+
+                    if(
+                        !isNaN(n) &&
+                        n >= nextNumber
+                    ){
+
+                        nextNumber =
+                            n + 1;
+
+                    }
+
+                }
+            );
+
+        }catch(error){
+
+            console.error(error);
+
+        }
+
+    }
+
+
+    invoiceNumber.value =
+        String(nextNumber)
+        .padStart(4,"0");
+
+
+    createRow();
+
+    calculate();
+
+}
+
+
+/* =====================================================
+   NEW BUTTON
+===================================================== */
+
+document
+.getElementById("newInvoice")
+.addEventListener(
+    "click",
+    function(){
+
+        if(editingInvoiceId){
+
+            const answer =
+                confirm(
+                    "إنشاء فاتورة جديدة؟"
+                );
+
+            if(!answer){
+                return;
+            }
+
+        }
+
+        prepareNewInvoice();
+
+    }
+);
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInvoices.addEventListener(
+    "input",
+    async function(){
+
+        await loadInvoices();
+
+    }
+);
+
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+document
+.getElementById("print")
+.addEventListener(
+    "click",
+    function(){
+
+        calculate();
+
+        window.print();
+
+    }
+);
+
+
+/* =====================================================
+   SHARE
+===================================================== */
+
+document
+.getElementById("share")
+.addEventListener(
+    "click",
+    async function(){
+
+        const result =
+            calculate();
+
+        const text =
+
+`Wood ART
+فاتورة تصنيع أخشاب
+
+رقم الفاتورة:
+${invoiceNumber.value}
+
+العميل:
+${client.value || "-"}
+
+التاريخ:
+${date.value}
+
+إجمالي الحجم:
+${result.totalVolume.toFixed(6)} م³
+
+إجمالي الأخشاب:
+${result.woodTotal.toFixed(2)} جنيه
+
+التصنيع:
+${result.manufacturingValue.toFixed(2)} جنيه
+
+الخامات الأخرى:
+${result.materialsTotal.toFixed(2)} جنيه
+
+الإجمالي النهائي:
+${result.finalTotal.toFixed(2)} جنيه
+
+المدفوع:
+${result.paidValue.toFixed(2)} جنيه
+
+المتبقي:
+${Math.max(
+    0,
+    result.remaining
+).toFixed(2)} جنيه`;
+
+
+        if(navigator.share){
+
+            try{
+
+                await navigator.share({
+                    title:
+                        "Wood ART - فاتورة",
+                    text
+                });
+
+            }catch(e){}
+
+        }else{
+
+            try{
+
+                await navigator
+                    .clipboard
+                    .writeText(text);
+
+                alert(
+                    "تم نسخ بيانات الفاتورة"
+                );
+
+            }catch(e){
+
+                alert(text);
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+manufacturing.addEventListener(
+    "input",
+    calculate
+);
+
+paid.addEventListener(
+    "input",
+    calculate
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+date.value =
+    today();
+
+createRow();
+
+calculate();
+
+</script>
+
+</body>
+</html>
