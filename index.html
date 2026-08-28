@@ -7,7 +7,9 @@
 <title>Wood ART - فاتورة تصنيع أخشاب</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 html,body{
     margin:0;
@@ -93,7 +95,7 @@ input:focus{
     font-weight:bold;
 }
 
-/* LOGIN */
+/* الحساب */
 
 .account{
     display:flex;
@@ -131,7 +133,7 @@ input:focus{
     color:white;
 }
 
-/* TABLE */
+/* الجدول */
 
 .table-wrapper{
     width:100%;
@@ -222,7 +224,7 @@ input:focus{
     font-weight:bold;
 }
 
-/* SUMMARY */
+/* الملخص */
 
 .summary{
     display:grid;
@@ -256,6 +258,8 @@ input:focus{
     border-color:#ead79d;
 }
 
+/* الخامات */
+
 .material-row{
     display:grid;
     grid-template-columns:1fr 100px 38px;
@@ -271,6 +275,8 @@ input:focus{
     font-weight:bold;
     font-size:15px;
 }
+
+/* الإجمالي */
 
 .final-total{
     background:#e7f1fb;
@@ -311,7 +317,7 @@ input:focus{
     font-weight:bold;
 }
 
-/* BUTTONS */
+/* الأزرار */
 
 .buttons{
     display:grid;
@@ -325,6 +331,7 @@ input:focus{
     border-radius:6px;
     font-size:11px;
     font-weight:bold;
+    cursor:pointer;
 }
 
 .btn-save{
@@ -347,7 +354,7 @@ input:focus{
     color:white;
 }
 
-/* EDIT */
+/* تعديل */
 
 .edit-badge{
     display:none;
@@ -366,7 +373,7 @@ input:focus{
     display:block;
 }
 
-/* INVOICES */
+/* الفواتير */
 
 .invoice-list{
     display:flex;
@@ -409,6 +416,7 @@ input:focus{
     color:white;
     font-weight:bold;
     font-size:10px;
+    cursor:pointer;
 }
 
 .open-invoice{
@@ -471,7 +479,6 @@ input:focus{
     .material-row{
         grid-template-columns:1fr 85px 34px;
     }
-
 }
 
 @media(max-width:380px){
@@ -487,7 +494,6 @@ input:focus{
     .wood-table td input{
         font-size:6px;
     }
-
 }
 
 @media print{
@@ -522,7 +528,8 @@ input:focus{
     <p>فاتورة تصنيع أخشاب</p>
 </div>
 
-<!-- ACCOUNT -->
+
+<!-- الحساب -->
 
 <div class="card no-print">
 
@@ -545,13 +552,13 @@ input:focus{
     </div>
 
     <div id="syncStatus" class="sync-status">
-        ☁️ يجب تسجيل الدخول لمزامنة الفواتير
+        ☁️ سجل الدخول لمزامنة الفواتير
     </div>
 
 </div>
 
 
-<!-- DATA -->
+<!-- بيانات الفاتورة -->
 
 <div class="card">
 
@@ -567,7 +574,9 @@ input:focus{
 
         <div>
             <label>اسم العميل</label>
-            <input id="client" type="text" placeholder="اسم العميل">
+            <input id="client"
+                   type="text"
+                   placeholder="اسم العميل">
         </div>
 
         <div>
@@ -580,7 +589,8 @@ input:focus{
 
         <div>
             <label>التاريخ</label>
-            <input id="date" type="date">
+            <input id="date"
+                   type="date">
         </div>
 
     </div>
@@ -588,7 +598,7 @@ input:focus{
 </div>
 
 
-<!-- WOOD -->
+<!-- الأخشاب -->
 
 <div class="card">
 
@@ -634,22 +644,31 @@ input:focus{
 
     </div>
 
-    <button id="addRow" class="add-row no-print">
+    <button id="addRow"
+            class="add-row no-print">
         ＋ إضافة صف
     </button>
 
     <div class="summary">
 
         <div class="summary-box">
-            <div class="summary-title">إجمالي الحجم</div>
-            <div id="totalVolume" class="summary-value">
+            <div class="summary-title">
+                إجمالي الحجم
+            </div>
+
+            <div id="totalVolume"
+                 class="summary-value">
                 0.000000 م³
             </div>
         </div>
 
         <div class="summary-box">
-            <div class="summary-title">إجمالي الأخشاب</div>
-            <div id="woodTotal" class="summary-value">
+            <div class="summary-title">
+                إجمالي الأخشاب
+            </div>
+
+            <div id="woodTotal"
+                 class="summary-value">
                 0.00 جنيه
             </div>
         </div>
@@ -659,7 +678,7 @@ input:focus{
 </div>
 
 
-<!-- MANUFACTURING -->
+<!-- التصنيع -->
 
 <div class="card">
 
@@ -680,7 +699,7 @@ input:focus{
 </div>
 
 
-<!-- OTHER MATERIALS -->
+<!-- خامات أخرى -->
 
 <div class="card">
 
@@ -695,13 +714,15 @@ input:focus{
         ＋ إضافة خامة
     </button>
 
-    <div class="summary-box" style="margin-top:6px">
+    <div class="summary-box"
+         style="margin-top:6px">
 
         <div class="summary-title">
             إجمالي الخامات الأخرى
         </div>
 
-        <div id="materialsTotal" class="summary-value">
+        <div id="materialsTotal"
+             class="summary-value">
             0.00 جنيه
         </div>
 
@@ -710,41 +731,60 @@ input:focus{
 </div>
 
 
-<!-- TOTAL -->
+<!-- الإجمالي -->
 
 <div class="card">
 
     <div class="summary">
 
         <div class="summary-box">
-            <div class="summary-title">إجمالي الأخشاب</div>
-            <div id="woodTotal2" class="summary-value">
+            <div class="summary-title">
+                إجمالي الأخشاب
+            </div>
+
+            <div id="woodTotal2"
+                 class="summary-value">
                 0.00 جنيه
             </div>
         </div>
 
         <div class="summary-box">
-            <div class="summary-title">التصنيع</div>
-            <div id="manufacturingTotal" class="summary-value">
+            <div class="summary-title">
+                التصنيع
+            </div>
+
+            <div id="manufacturingTotal"
+                 class="summary-value">
                 0.00 جنيه
             </div>
         </div>
 
         <div class="summary-box">
-            <div class="summary-title">خامات أخرى</div>
-            <div id="materialsTotal2" class="summary-value">
+            <div class="summary-title">
+                خامات أخرى
+            </div>
+
+            <div id="materialsTotal2"
+                 class="summary-value">
                 0.00 جنيه
             </div>
         </div>
 
         <div class="summary-box final-total">
-            <div class="summary-title">الإجمالي النهائي</div>
-            <div id="finalTotal" class="summary-value">
+
+            <div class="summary-title">
+                الإجمالي النهائي
+            </div>
+
+            <div id="finalTotal"
+                 class="summary-value">
                 0.00 جنيه
             </div>
+
         </div>
 
     </div>
+
 
     <div class="payment">
 
@@ -774,7 +814,7 @@ input:focus{
 </div>
 
 
-<!-- BUTTONS -->
+<!-- الأزرار -->
 
 <div class="card no-print">
 
@@ -805,7 +845,7 @@ input:focus{
 </div>
 
 
-<!-- SAVED -->
+<!-- الفواتير -->
 
 <div class="card no-print">
 
@@ -827,9 +867,11 @@ input:focus{
 </div>
 
 
-<!-- FIREBASE -->
-
 <script type="module">
+
+/* =====================================================
+   FIREBASE
+===================================================== */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
@@ -837,8 +879,7 @@ from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {
     getAuth,
     GoogleAuthProvider,
-    signInWithRedirect,
-    getRedirectResult,
+    signInWithPopup,
     onAuthStateChanged,
     signOut
 }
@@ -850,10 +891,10 @@ import {
     addDoc,
     setDoc,
     doc,
+    getDoc,
     getDocs,
     deleteDoc,
     query,
-    where,
     orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
@@ -887,7 +928,7 @@ const firebaseConfig = {
 
 
 /* =====================================================
-   INIT
+   INITIALIZE
 ===================================================== */
 
 const app =
@@ -901,6 +942,10 @@ const db =
 
 const provider =
     new GoogleAuthProvider();
+
+provider.setCustomParameters({
+    prompt:"select_account"
+});
 
 
 /* =====================================================
@@ -999,7 +1044,7 @@ function escapeHTML(value){
 
 
 /* =====================================================
-   LOGIN
+   LOGIN GOOGLE
 ===================================================== */
 
 loginBtn.addEventListener(
@@ -1008,24 +1053,98 @@ loginBtn.addEventListener(
 
         try{
 
-            syncStatus.textContent =
-                "🔐 جاري تسجيل الدخول...";
+            loginBtn.disabled = true;
 
-            await signInWithRedirect(
-                auth,
-                provider
-            );
+            loginBtn.textContent =
+                "🔐 جاري الدخول...";
+
+            syncStatus.textContent =
+                "🔐 جاري تسجيل الدخول بحساب Google...";
+
+
+            const result =
+                await signInWithPopup(
+                    auth,
+                    provider
+                );
+
+
+            if(result.user){
+
+                currentUser =
+                    result.user;
+
+                syncStatus.textContent =
+                    "☁️ تم تسجيل الدخول بنجاح";
+
+            }
 
         }catch(error){
 
-            console.error(error);
+            console.error(
+                "Google Login Error:",
+                error
+            );
 
-            syncStatus.textContent =
-                "❌ حدث خطأ أثناء تسجيل الدخول";
+
+            let message =
+                error.message ||
+                "خطأ غير معروف";
+
+
+            if(
+                error.code ===
+                "auth/unauthorized-domain"
+            ){
+
+                message =
+                    "هذا النطاق غير مضاف في Firebase Authentication.\n\n" +
+                    "أضف نطاق GitHub Pages في:\n" +
+                    "Authentication → Settings → Authorized domains";
+
+            }
+
+
+            if(
+                error.code ===
+                "auth/popup-blocked"
+            ){
+
+                message =
+                    "المتصفح منع نافذة تسجيل Google.\n" +
+                    "اسمح بالنوافذ المنبثقة للموقع ثم حاول مرة أخرى.";
+
+            }
+
+
+            if(
+                error.code ===
+                "auth/operation-not-allowed"
+            ){
+
+                message =
+                    "تسجيل الدخول بواسطة Google غير مفعل.\n\n" +
+                    "اذهب إلى:\n" +
+                    "Authentication → Sign-in method → Google → Enable";
+
+            }
+
 
             alert(
-                "تعذر تسجيل الدخول بحساب Google"
+                "❌ تعذر تسجيل الدخول\n\n" +
+                message
             );
+
+
+            syncStatus.textContent =
+                "❌ فشل تسجيل الدخول";
+
+        }finally{
+
+            loginBtn.disabled = false;
+
+            loginBtn.textContent =
+                "🔐 تسجيل الدخول بحساب Google";
 
         }
 
@@ -1041,26 +1160,36 @@ logoutBtn.addEventListener(
     "click",
     async function(){
 
-        await signOut(auth);
+        try{
 
-        currentUser = null;
+            await signOut(auth);
 
-        userInfo.textContent =
-            "لم يتم تسجيل الدخول";
+            currentUser = null;
 
-        loginBtn.style.display =
-            "block";
+            editingInvoiceId = null;
 
-        logoutBtn.style.display =
-            "none";
+            userInfo.textContent =
+                "لم يتم تسجيل الدخول";
 
-        syncStatus.textContent =
-            "☁️ تم تسجيل الخروج";
+            loginBtn.style.display =
+                "block";
 
-        invoiceList.innerHTML =
-            `<div class="no-invoices">
-                سجل الدخول لعرض فواتيرك
-            </div>`;
+            logoutBtn.style.display =
+                "none";
+
+            syncStatus.textContent =
+                "☁️ تم تسجيل الخروج";
+
+            invoiceList.innerHTML =
+                `<div class="no-invoices">
+                    سجل الدخول لعرض فواتيرك
+                </div>`;
+
+        }catch(error){
+
+            console.error(error);
+
+        }
 
     }
 );
@@ -1076,13 +1205,17 @@ onAuthStateChanged(
 
         currentUser = user;
 
+
         if(user){
 
             userInfo.textContent =
                 "👤 " +
-                (user.displayName ||
-                 user.email ||
-                 "حساب Google");
+                (
+                    user.displayName ||
+                    user.email ||
+                    "حساب Google"
+                );
+
 
             loginBtn.style.display =
                 "none";
@@ -1093,12 +1226,16 @@ onAuthStateChanged(
             syncStatus.textContent =
                 "☁️ متصل بالسحابة";
 
+
             await loadInvoices();
+
 
             if(
                 !invoiceNumber.value
             ){
+
                 await prepareNewInvoice();
+
             }
 
         }else{
@@ -1122,34 +1259,14 @@ onAuthStateChanged(
 
 
 /* =====================================================
-   REDIRECT RESULT
-===================================================== */
-
-getRedirectResult(auth)
-.catch(
-    function(error){
-
-        if(error){
-
-            console.error(
-                "Google redirect:",
-                error
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   CREATE ROW
+   CREATE WOOD ROW
 ===================================================== */
 
 function createRow(data = {}){
 
     const row =
         document.createElement("tr");
+
 
     row.innerHTML = `
 
@@ -1158,25 +1275,33 @@ function createRow(data = {}){
         <td>
             <input class="length"
                    inputmode="decimal"
-                   value="${escapeHTML(data.length || "")}">
+                   value="${escapeHTML(
+                       data.length || ""
+                   )}">
         </td>
 
         <td>
             <input class="width"
                    inputmode="decimal"
-                   value="${escapeHTML(data.width || "")}">
+                   value="${escapeHTML(
+                       data.width || ""
+                   )}">
         </td>
 
         <td>
             <input class="thickness"
                    inputmode="decimal"
-                   value="${escapeHTML(data.thickness || "")}">
+                   value="${escapeHTML(
+                       data.thickness || ""
+                   )}">
         </td>
 
         <td>
             <input class="quantity"
                    inputmode="decimal"
-                   value="${escapeHTML(data.quantity || "")}">
+                   value="${escapeHTML(
+                       data.quantity || ""
+                   )}">
         </td>
 
         <td class="volume">
@@ -1186,7 +1311,9 @@ function createRow(data = {}){
         <td>
             <input class="price"
                    inputmode="decimal"
-                   value="${escapeHTML(data.price || "")}">
+                   value="${escapeHTML(
+                       data.price || ""
+                   )}">
         </td>
 
         <td class="row-total">
@@ -1196,7 +1323,9 @@ function createRow(data = {}){
         <td>
             <input class="note"
                    placeholder="ملاحظات"
-                   value="${escapeHTML(data.note || "")}">
+                   value="${escapeHTML(
+                       data.note || ""
+                   )}">
         </td>
 
         <td>
@@ -1208,15 +1337,22 @@ function createRow(data = {}){
 
     `;
 
+
     woodBody.appendChild(row);
 
     connectRow(row);
 
+
     row.querySelector(".delete-row")
         .addEventListener(
             "click",
-            () => deleteRow(row)
+            function(){
+
+                deleteRow(row);
+
+            }
         );
+
 
     calculate();
 
@@ -1224,13 +1360,14 @@ function createRow(data = {}){
 
 
 /* =====================================================
-   CONNECT ROW
+   CONNECT ROW INPUTS
 ===================================================== */
 
 function connectRow(row){
 
     const inputs =
         row.querySelectorAll("input");
+
 
     inputs.forEach(
         function(input,index){
@@ -1240,6 +1377,7 @@ function connectRow(row){
                 calculate
             );
 
+
             input.addEventListener(
                 "keydown",
                 function(event){
@@ -1247,10 +1385,14 @@ function connectRow(row){
                     if(
                         event.key !== "Enter"
                     ){
+
                         return;
+
                     }
 
+
                     event.preventDefault();
+
 
                     if(
                         index <
@@ -1265,14 +1407,18 @@ function connectRow(row){
 
                         createRow();
 
+
                         const rows =
                             woodBody
                             .querySelectorAll("tr");
 
+
                         rows[
                             rows.length - 1
                         ]
-                        .querySelector(".length")
+                        .querySelector(
+                            ".length"
+                        )
                         .focus();
 
                     }
@@ -1295,20 +1441,39 @@ function deleteRow(row){
     const rows =
         woodBody.querySelectorAll("tr");
 
+
     if(rows.length === 1){
 
-        row.querySelector(".length").value="";
-        row.querySelector(".width").value="";
-        row.querySelector(".thickness").value="";
-        row.querySelector(".quantity").value="";
-        row.querySelector(".price").value="";
-        row.querySelector(".note").value="";
+        row.querySelector(
+            ".length"
+        ).value = "";
+
+        row.querySelector(
+            ".width"
+        ).value = "";
+
+        row.querySelector(
+            ".thickness"
+        ).value = "";
+
+        row.querySelector(
+            ".quantity"
+        ).value = "";
+
+        row.querySelector(
+            ".price"
+        ).value = "";
+
+        row.querySelector(
+            ".note"
+        ).value = "";
 
     }else{
 
         row.remove();
 
     }
+
 
     calculate();
 
@@ -1350,8 +1515,10 @@ function calculate(){
 
     let woodTotal = 0;
 
+
     const rows =
         woodBody.querySelectorAll("tr");
+
 
     rows.forEach(
         function(row,index){
@@ -1361,30 +1528,52 @@ function calculate(){
             ).textContent =
                 index + 1;
 
+
             const length =
                 num(
-                    row.querySelector(".length").value
+                    row.querySelector(
+                        ".length"
+                    ).value
                 );
+
 
             const width =
                 num(
-                    row.querySelector(".width").value
+                    row.querySelector(
+                        ".width"
+                    ).value
                 );
+
 
             const thickness =
                 num(
-                    row.querySelector(".thickness").value
+                    row.querySelector(
+                        ".thickness"
+                    ).value
                 );
+
 
             const quantity =
                 num(
-                    row.querySelector(".quantity").value
+                    row.querySelector(
+                        ".quantity"
+                    ).value
                 );
+
 
             const price =
                 num(
-                    row.querySelector(".price").value
+                    row.querySelector(
+                        ".price"
+                    ).value
                 );
+
+
+            /*
+             * سم × سم × سم
+             * ÷ 1,000,000
+             * = متر مكعب
+             */
 
             const volume =
                 (
@@ -1394,16 +1583,22 @@ function calculate(){
                     quantity
                 ) / 1000000;
 
+
             const total =
                 volume * price;
 
-            row.querySelector(".volume")
-                .textContent =
+
+            row.querySelector(
+                ".volume"
+            ).textContent =
                 volume.toFixed(6);
 
-            row.querySelector(".row-total")
-                .textContent =
+
+            row.querySelector(
+                ".row-total"
+            ).textContent =
                 total.toFixed(2);
+
 
             totalVolume += volume;
 
@@ -1415,10 +1610,13 @@ function calculate(){
 
     let materialsTotal = 0;
 
+
     materials
-    .querySelectorAll(".material-price")
+    .querySelectorAll(
+        ".material-price"
+    )
     .forEach(
-        input => {
+        function(input){
 
             materialsTotal +=
                 num(input.value);
@@ -1428,57 +1626,80 @@ function calculate(){
 
 
     const manufacturingValue =
-        num(manufacturing.value);
+        num(
+            manufacturing.value
+        );
+
 
     const finalTotal =
         woodTotal +
         manufacturingValue +
         materialsTotal;
 
+
     const paidValue =
-        num(paid.value);
+        num(
+            paid.value
+        );
+
 
     const remaining =
-        finalTotal - paidValue;
+        finalTotal -
+        paidValue;
 
 
-    document.getElementById("totalVolume")
-        .textContent =
+    document.getElementById(
+        "totalVolume"
+    ).textContent =
         totalVolume.toFixed(6)
         + " م³";
 
-    document.getElementById("woodTotal")
-        .textContent =
+
+    document.getElementById(
+        "woodTotal"
+    ).textContent =
         woodTotal.toFixed(2)
         + " جنيه";
 
-    document.getElementById("woodTotal2")
-        .textContent =
+
+    document.getElementById(
+        "woodTotal2"
+    ).textContent =
         woodTotal.toFixed(2)
         + " جنيه";
 
-    document.getElementById("manufacturingTotal")
-        .textContent =
+
+    document.getElementById(
+        "manufacturingTotal"
+    ).textContent =
         manufacturingValue.toFixed(2)
         + " جنيه";
 
-    document.getElementById("materialsTotal")
-        .textContent =
+
+    document.getElementById(
+        "materialsTotal"
+    ).textContent =
         materialsTotal.toFixed(2)
         + " جنيه";
 
-    document.getElementById("materialsTotal2")
-        .textContent =
+
+    document.getElementById(
+        "materialsTotal2"
+    ).textContent =
         materialsTotal.toFixed(2)
         + " جنيه";
 
-    document.getElementById("finalTotal")
-        .textContent =
+
+    document.getElementById(
+        "finalTotal"
+    ).textContent =
         finalTotal.toFixed(2)
         + " جنيه";
 
-    document.getElementById("remaining")
-        .textContent =
+
+    document.getElementById(
+        "remaining"
+    ).textContent =
         Math.max(
             0,
             remaining
@@ -1487,13 +1708,21 @@ function calculate(){
 
 
     return {
+
         totalVolume,
+
         woodTotal,
+
         manufacturingValue,
+
         materialsTotal,
+
         finalTotal,
+
         paidValue,
+
         remaining
+
     };
 
 }
@@ -1509,27 +1738,43 @@ function collectWoodRows(){
         woodBody.querySelectorAll("tr")
     )
     .map(
-        row => ({
+        function(row){
 
-            length:
-                row.querySelector(".length").value,
+            return {
 
-            width:
-                row.querySelector(".width").value,
+                length:
+                    row.querySelector(
+                        ".length"
+                    ).value,
 
-            thickness:
-                row.querySelector(".thickness").value,
+                width:
+                    row.querySelector(
+                        ".width"
+                    ).value,
 
-            quantity:
-                row.querySelector(".quantity").value,
+                thickness:
+                    row.querySelector(
+                        ".thickness"
+                    ).value,
 
-            price:
-                row.querySelector(".price").value,
+                quantity:
+                    row.querySelector(
+                        ".quantity"
+                    ).value,
 
-            note:
-                row.querySelector(".note").value
+                price:
+                    row.querySelector(
+                        ".price"
+                    ).value,
 
-        })
+                note:
+                    row.querySelector(
+                        ".note"
+                    ).value
+
+            };
+
+        }
     );
 
 }
@@ -1547,19 +1792,23 @@ function collectMaterials(){
         )
     )
     .map(
-        row => ({
+        function(row){
 
-            name:
-                row.querySelector(
-                    ".material-name"
-                ).value,
+            return {
 
-            price:
-                row.querySelector(
-                    ".material-price"
-                ).value
+                name:
+                    row.querySelector(
+                        ".material-name"
+                    ).value,
 
-        })
+                price:
+                    row.querySelector(
+                        ".material-price"
+                    ).value
+
+            };
+
+        }
     );
 
 }
@@ -1573,6 +1822,7 @@ function collectInvoice(){
 
     const totals =
         calculate();
+
 
     return {
 
@@ -1627,7 +1877,7 @@ function collectInvoice(){
 
 
 /* =====================================================
-   SAVE TO FIRESTORE
+   SAVE
 ===================================================== */
 
 document
@@ -1668,10 +1918,12 @@ document
                         editingInvoiceId
                     );
 
+
                 await setDoc(
                     invoiceRef,
                     invoice
                 );
+
 
                 alert(
                     "✅ تم تحديث الفاتورة رقم "
@@ -1691,8 +1943,10 @@ document
                         invoice
                     );
 
+
                 editingInvoiceId =
                     invoiceRef.id;
+
 
                 alert(
                     "✅ تم حفظ الفاتورة في السحابة"
@@ -1705,21 +1959,31 @@ document
                 "show"
             );
 
+
             syncStatus.textContent =
                 "☁️ تم الحفظ بنجاح";
 
+
             await loadInvoices();
+
 
         }catch(error){
 
-            console.error(error);
+            console.error(
+                "Save Error:",
+                error
+            );
+
 
             syncStatus.textContent =
                 "❌ فشل الحفظ";
 
+
             alert(
-                "حدث خطأ أثناء الحفظ:\n"
-                + error.message
+                "❌ حدث خطأ أثناء الحفظ:\n\n" +
+                error.code +
+                "\n\n" +
+                error.message
             );
 
         }
@@ -1735,8 +1999,11 @@ document
 async function loadInvoices(){
 
     if(!currentUser){
+
         return;
+
     }
+
 
     try{
 
@@ -1748,6 +2015,7 @@ async function loadInvoices(){
                 "invoices"
             );
 
+
         const q =
             query(
                 invoicesRef,
@@ -1757,35 +2025,48 @@ async function loadInvoices(){
                 )
             );
 
+
         const snapshot =
             await getDocs(q);
 
+
         const invoices =
             snapshot.docs.map(
-                docItem => ({
+                function(item){
 
-                    id:
-                        docItem.id,
+                    return {
 
-                    ...docItem.data()
+                        id:
+                            item.id,
 
-                })
+                        ...item.data()
+
+                    };
+
+                }
             );
+
 
         renderInvoices(
             invoices
         );
 
+
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Load invoices:",
+            error
+        );
+
 
         syncStatus.textContent =
             "❌ تعذر تحميل الفواتير";
 
+
         alert(
-            "تعذر تحميل الفواتير.\n"
-            + error.message
+            "❌ تعذر تحميل الفواتير:\n\n" +
+            error.message
         );
 
     }
@@ -1800,32 +2081,31 @@ async function loadInvoices(){
 async function loadInvoice(id){
 
     if(!currentUser){
+
         return;
+
     }
+
 
     try{
 
-        const invoicesRef =
-            collection(
+        const invoiceRef =
+            doc(
                 db,
                 "users",
                 currentUser.uid,
-                "invoices"
+                "invoices",
+                id
             );
+
 
         const snapshot =
-            await getDocs(
-                query(
-                    invoicesRef,
-                    where(
-                        "__name__",
-                        "==",
-                        id
-                    )
-                )
+            await getDoc(
+                invoiceRef
             );
 
-        if(snapshot.empty){
+
+        if(!snapshot.exists()){
 
             alert(
                 "الفاتورة غير موجودة"
@@ -1835,23 +2115,30 @@ async function loadInvoice(id){
 
         }
 
+
         const invoice =
-            snapshot.docs[0].data();
+            snapshot.data();
+
 
         editingInvoiceId =
             id;
 
+
         invoiceNumber.value =
             invoice.number || "";
+
 
         client.value =
             invoice.client || "";
 
+
         date.value =
             invoice.date || today();
 
+
         manufacturing.value =
             invoice.manufacturing || "";
+
 
         paid.value =
             invoice.paid || "";
@@ -1859,13 +2146,18 @@ async function loadInvoice(id){
 
         woodBody.innerHTML = "";
 
+
         if(
             invoice.rows &&
             invoice.rows.length
         ){
 
             invoice.rows.forEach(
-                row => createRow(row)
+                function(row){
+
+                    createRow(row);
+
+                }
             );
 
         }else{
@@ -1877,13 +2169,18 @@ async function loadInvoice(id){
 
         materials.innerHTML = "";
 
+
         if(
             invoice.materials &&
             invoice.materials.length
         ){
 
             invoice.materials.forEach(
-                item => createMaterial(item)
+                function(item){
+
+                    createMaterial(item);
+
+                }
             );
 
         }
@@ -1891,22 +2188,36 @@ async function loadInvoice(id){
 
         calculate();
 
+
         editBadge.classList.add(
             "show"
         );
 
+
+        syncStatus.textContent =
+            "☁️ تم فتح الفاتورة";
+
+
         window.scrollTo({
+
             top:0,
+
             behavior:"smooth"
+
         });
 
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Open invoice:",
+            error
+        );
+
 
         alert(
-            "تعذر فتح الفاتورة"
+            "❌ تعذر فتح الفاتورة:\n\n" +
+            error.message
         );
 
     }
@@ -1921,16 +2232,22 @@ async function loadInvoice(id){
 async function deleteInvoice(id){
 
     if(!currentUser){
+
         return;
+
     }
+
 
     const confirmed =
         confirm(
-            "هل تريد حذف هذه الفاتورة نهائيًا من السحابة؟"
+            "⚠️ هل تريد حذف هذه الفاتورة نهائيًا؟"
         );
 
+
     if(!confirmed){
+
         return;
+
     }
 
 
@@ -1954,23 +2271,30 @@ async function deleteInvoice(id){
             editingInvoiceId =
                 null;
 
-            prepareNewInvoice();
+            await prepareNewInvoice();
 
         }
 
 
         await loadInvoices();
 
+
         alert(
             "🗑️ تم حذف الفاتورة"
         );
 
+
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Delete invoice:",
+            error
+        );
+
 
         alert(
-            "تعذر حذف الفاتورة"
+            "❌ تعذر حذف الفاتورة:\n\n" +
+            error.message
         );
 
     }
@@ -1992,21 +2316,27 @@ function renderInvoices(invoices){
 
     const filtered =
         invoices.filter(
-            invoice =>
+            function(invoice){
 
-                String(
-                    invoice.client || ""
-                )
-                .toLowerCase()
-                .includes(search)
+                return (
 
-                ||
+                    String(
+                        invoice.client || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
 
-                String(
-                    invoice.number || ""
-                )
-                .toLowerCase()
-                .includes(search)
+                    ||
+
+                    String(
+                        invoice.number || ""
+                    )
+                    .toLowerCase()
+                    .includes(search)
+
+                );
+
+            }
         );
 
 
@@ -2026,10 +2356,13 @@ function renderInvoices(invoices){
 
 
     filtered.forEach(
-        invoice => {
+        function(invoice){
 
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             item.className =
                 "invoice-item";
@@ -2063,6 +2396,7 @@ function renderInvoices(invoices){
 
                 </div>
 
+
                 <div class="invoice-info">
 
                     <div>
@@ -2090,6 +2424,7 @@ function renderInvoices(invoices){
 
                 </div>
 
+
                 <div class="invoice-actions">
 
                     <button class="open-invoice">
@@ -2101,6 +2436,7 @@ function renderInvoices(invoices){
                     </button>
 
                 </div>
+
             `;
 
 
@@ -2109,7 +2445,13 @@ function renderInvoices(invoices){
             )
             .addEventListener(
                 "click",
-                () => loadInvoice(invoice.id)
+                function(){
+
+                    loadInvoice(
+                        invoice.id
+                    );
+
+                }
             );
 
 
@@ -2118,11 +2460,19 @@ function renderInvoices(invoices){
             )
             .addEventListener(
                 "click",
-                () => deleteInvoice(invoice.id)
+                function(){
+
+                    deleteInvoice(
+                        invoice.id
+                    );
+
+                }
             );
 
 
-            invoiceList.appendChild(item);
+            invoiceList.appendChild(
+                item
+            );
 
         }
     );
@@ -2137,10 +2487,14 @@ function renderInvoices(invoices){
 function createMaterial(data = {}){
 
     const row =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     row.className =
         "material-row";
+
 
     row.innerHTML = `
 
@@ -2205,10 +2559,12 @@ document
 
         createMaterial();
 
+
         const rows =
             materials.querySelectorAll(
                 ".material-row"
             );
+
 
         rows[
             rows.length - 1
@@ -2231,9 +2587,11 @@ async function prepareNewInvoice(){
     editingInvoiceId =
         null;
 
+
     editBadge.classList.remove(
         "show"
     );
+
 
     client.value = "";
 
@@ -2244,9 +2602,11 @@ async function prepareNewInvoice(){
 
     paid.value = "";
 
+
     materials.innerHTML = "";
 
     woodBody.innerHTML = "";
+
 
     let nextNumber = 1;
 
@@ -2265,8 +2625,9 @@ async function prepareNewInvoice(){
                     )
                 );
 
+
             snapshot.forEach(
-                documentItem => {
+                function(documentItem){
 
                     const n =
                         parseInt(
@@ -2274,6 +2635,7 @@ async function prepareNewInvoice(){
                             .data()
                             .number
                         );
+
 
                     if(
                         !isNaN(n) &&
@@ -2288,9 +2650,13 @@ async function prepareNewInvoice(){
                 }
             );
 
+
         }catch(error){
 
-            console.error(error);
+            console.error(
+                "Number:",
+                error
+            );
 
         }
 
@@ -2310,29 +2676,33 @@ async function prepareNewInvoice(){
 
 
 /* =====================================================
-   NEW BUTTON
+   NEW INVOICE BUTTON
 ===================================================== */
 
 document
 .getElementById("newInvoice")
 .addEventListener(
     "click",
-    function(){
+    async function(){
 
         if(editingInvoiceId){
 
             const answer =
                 confirm(
-                    "إنشاء فاتورة جديدة؟"
+                    "هل تريد إنشاء فاتورة جديدة؟"
                 );
 
+
             if(!answer){
+
                 return;
+
             }
 
         }
 
-        prepareNewInvoice();
+
+        await prepareNewInvoice();
 
     }
 );
@@ -2383,6 +2753,7 @@ document
         const result =
             calculate();
 
+
         const text =
 
 `Wood ART
@@ -2422,17 +2793,26 @@ ${Math.max(
 ).toFixed(2)} جنيه`;
 
 
-        if(navigator.share){
+        if(
+            navigator.share
+        ){
 
             try{
 
                 await navigator.share({
+
                     title:
                         "Wood ART - فاتورة",
+
                     text
+
                 });
 
-            }catch(e){}
+            }catch(error){
+
+                console.log(error);
+
+            }
 
         }else{
 
@@ -2442,11 +2822,12 @@ ${Math.max(
                     .clipboard
                     .writeText(text);
 
+
                 alert(
-                    "تم نسخ بيانات الفاتورة"
+                    "✅ تم نسخ بيانات الفاتورة"
                 );
 
-            }catch(e){
+            }catch(error){
 
                 alert(text);
 
