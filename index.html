@@ -853,6 +853,79 @@ textarea{width:100%;min-height:75px;border:1px solid #cbd4db;border-radius:7px;p
 @media(max-width:480px){.roof-header{min-height:80px}.roof-logo{width:112px;height:54px}.roof-service-line{font-size:12px}.roof-hero{padding:16px 10px}.roof-hero h2{font-size:16px}.service-chips{gap:5px}.service-chips span{font-size:9px;padding:5px}.roof-stat b{font-size:18px}.customer{grid-template-columns:1fr}.customer>div:first-child{grid-column:auto}.buttons{grid-template-columns:1fr 1fr}.invoice-info{grid-template-columns:1fr 1fr}.invoice-actions button{flex:1}.fixed-total-inner{font-size:11px}.fixed-total-inner strong{font-size:17px}}
 
 body.ra-dark{background:#10161b;color:#eef2f4}body.ra-dark .card,body.ra-dark .more-card,body.ra-dark .roof-header{background:#1a2229;color:#eef2f4;border-color:#34404a}body.ra-dark input,body.ra-dark textarea,body.ra-dark select{background:#222c34;color:#fff;border-color:#4b5964}body.ra-dark label,body.ra-dark .small-note{color:#c7ced3}.ra-font-small{font-size:13px}.ra-font-medium{font-size:15px}.ra-font-large{font-size:17px}
+
+/* ===== Roof ART V10 — final mobile/layout overrides ===== */
+html,body{margin:0;padding:0;width:100%;min-width:0;overflow-x:hidden}
+body{background:#eef0f2;color:#18232d;font-family:Arial,Tahoma,sans-serif}
+.app{width:100%;max-width:1220px;margin:0 auto;padding:0 10px 92px;position:relative}
+.roof-main{margin-left:202px;min-width:0}
+.roof-header{min-height:94px;margin:0 0 10px;padding:10px 16px;background:#fff;border-radius:0 0 18px 18px;border-bottom:4px solid #c49757;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:0 5px 18px rgba(0,0,0,.08)}
+.roof-brand{display:flex;align-items:center;gap:10px;min-width:0}.roof-logo{width:160px;height:78px;object-fit:contain}.roof-brand-copy{display:flex;flex-direction:column;gap:2px}.roof-name{font-size:25px;font-weight:900}.roof-desc{font-size:12px;font-weight:800;color:#3f474e}.roof-tagline{font-size:11px;font-weight:800;color:#8f5f2e}.roof-service-line{font-size:19px;font-weight:900;color:#161d23;text-align:center;line-height:1.5;max-width:520px}
+.roof-sidebar{left:10px;top:10px;bottom:10px;width:182px;background:linear-gradient(180deg,#101820,#202a32);border-radius:18px;padding:14px 10px;z-index:45}.side-btn{color:#f7f8f8}.side-btn.active{color:#e1b46e}
+.roof-hero{min-height:310px;border-radius:14px;background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px 18px;overflow:hidden}.hero-copy h2{font-size:25px;line-height:1.45;margin:8px 0 16px}.hero-logo img{max-width:310px;width:55%;height:auto;max-height:105px;object-fit:contain}.service-chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}.service-chips span{font-size:12px;padding:7px 10px;border:1px solid rgba(225,180,110,.65);border-radius:20px;background:rgba(17,24,30,.72);color:#fff;font-weight:800}
+.roof-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:0 0 10px}.roof-stat{background:#fff;border:1px solid #e1e4e6;border-radius:13px;padding:13px;box-shadow:0 3px 12px rgba(0,0,0,.06)}.roof-stat b{font-size:21px;color:#17212b}.roof-stat small{color:#5e6870;font-size:11px;font-weight:800}
+.card,.more-card{background:#fff;border:1px solid #e3ded5;border-radius:12px;box-shadow:0 3px 14px rgba(17,26,34,.055);margin:7px 0;padding:10px}.section-title{color:#6f481f;font-size:16px;font-weight:900;border-right:4px solid #c49757;padding-right:8px;margin-bottom:9px}label{color:#39434b;font-size:12px;font-weight:800}input,textarea,select{color:#17212b;background:#fff;border:1px solid #c7cfd5;font-size:12px}input{height:38px}.customer{gap:8px}.quick-actions .btn{min-width:110px}
+/* Keep wood table exactly horizontal and readable */
+.table-wrapper{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.wood-table{min-width:930px;width:100%;table-layout:fixed}.wood-table th{background:#efe3d2;color:#4b321b;font-size:9px;height:36px}.wood-table td{font-size:9px;height:38px}.wood-table td input{font-size:10px;height:30px}
+/* Materials / manufacturing / payments are real tables too */
+.materials-table-wrap,.manufacturing-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.materials-table,.manufacturing-table,.payments-table{min-width:620px;width:100%;border-collapse:collapse;table-layout:fixed}.materials-table th,.materials-table td,.manufacturing-table th,.manufacturing-table td,.payments-table th,.payments-table td{border:1px solid #d2d8dc;padding:7px 5px;text-align:center;vertical-align:middle}.materials-table th,.manufacturing-table th,.payments-table th{background:#202a31;color:#fff;font-size:11px}.materials-table td,.manufacturing-table td,.payments-table td{font-size:11px}.materials-table input,.manufacturing-table input,.payments-table input{min-width:0;width:100%;height:34px;font-size:11px}.materials-table td:last-child button,.manufacturing-table td:last-child button,.payments-table td:last-child button{width:32px;height:30px;border:0;border-radius:6px;background:#c62828;color:#fff;font-weight:900;font-size:16px}
+.summary,.totals-grid,.discount-grid,.payments-grid{gap:8px}.summary-box{background:#fafbfc;border:1px solid #d7dee3}.summary-title{color:#5c6670;font-weight:800}.summary-value{color:#17212b}.final-total{background:#f3eadc;border-color:#d8b77e}.final-total .summary-title,.final-total .summary-value{color:#6f481f}
+.invoice-list{gap:8px}.invoice-item{background:#fff;border:1px solid #ddd7ce;border-radius:10px;padding:10px}.invoice-info div{border:1px solid #e4e7e9}.invoice-actions{grid-template-columns:repeat(3,1fr)}.invoice-actions button{height:36px}.invoice-filters{gap:7px}.invoice-filters button{font-size:11px}
+.more-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.more-card h3{color:#6f481f}.library-item{grid-template-columns:minmax(0,1fr) 100px auto}
+/* Zoom controls never cover navigation */
+.zoom-controls{position:fixed;left:8px;top:86px;bottom:auto;z-index:35;background:rgba(17,26,34,.96);padding:4px;border-radius:10px}.zoom-controls button{width:32px;height:32px}
+.fixed-total-bar{z-index:40}
+/* Dedicated page states */
+body.page-dashboard .invoice-editor-card,body.page-dashboard .invoice-list-card,body.page-dashboard #moreSection{display:none!important}
+body.page-invoices .invoice-editor-card,body.page-invoices #moreSection,body.page-invoices #homeTop,body.page-invoices .roof-stats,body.page-invoices #dashboardLatest{display:none!important}
+body.page-invoice-editor .invoice-list-card,body.page-invoice-editor #moreSection,body.page-invoice-editor #homeTop,body.page-invoice-editor .roof-stats,body.page-invoice-editor #dashboardLatest{display:none!important}
+body.page-more .invoice-editor-card,body.page-more .invoice-list-card,body.page-more #homeTop,body.page-more .roof-stats,body.page-more #dashboardLatest{display:none!important}
+#dashboardLatest{background:#fff;border:1px solid #e3ded5;border-radius:12px;padding:10px;margin:0 0 10px}.dashboard-latest-title{font-weight:900;color:#6f481f;font-size:16px;margin-bottom:8px}.dashboard-latest-list{display:grid;gap:7px}.dashboard-latest-item{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;align-items:center;border:1px solid #e2e5e7;border-radius:9px;padding:8px;background:#fafbfc}.dashboard-latest-item button{border:0;border-radius:7px;background:#6f481f;color:#fff;padding:7px 10px;font-weight:800}
+@media(max-width:900px){
+ body{font-size:14px}.app{max-width:none;padding:0 6px 86px}.roof-main{margin-left:0}.roof-sidebar{left:5px;right:5px;top:auto;bottom:5px;width:auto;height:64px;padding:5px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px;border-radius:16px}.roof-sidebar .side-btn:nth-child(6){display:none}.side-logo{display:none}.side-btn{justify-content:center;flex-direction:column;gap:2px;padding:4px 2px;font-size:10px}.side-btn span{flex:none}.roof-header{min-height:78px;padding:6px 8px;border-radius:0 0 14px 14px;gap:6px}.roof-logo{width:105px;height:55px}.roof-brand-copy{display:none}.roof-service-line{font-size:12px;max-width:62%;line-height:1.35}.roof-hero{min-height:235px;padding:16px 9px}.hero-copy h2{font-size:17px}.hero-logo img{width:70%;max-height:78px}.service-chips{gap:5px}.service-chips span{font-size:9px;padding:5px 7px}.roof-stats{grid-template-columns:repeat(2,1fr);gap:6px}.roof-stat{padding:9px}.roof-stat b{font-size:18px}.card,.more-card{margin:5px 0;padding:8px}.section-title{font-size:14px}.customer{grid-template-columns:1fr 1fr}.customer>div.wide{grid-column:1/-1}.more-grid{grid-template-columns:1fr}.invoice-actions{grid-template-columns:1fr 1fr 1fr}.dashboard-latest-item{grid-template-columns:1fr 1fr}.dashboard-latest-item button{grid-column:1/-1}.zoom-controls{top:88px;left:6px}.zoom-controls button{width:30px;height:30px}.materials-table,.manufacturing-table,.payments-table{min-width:620px}.wood-table{min-width:930px}
+}
+@media(max-width:480px){.roof-header{min-height:74px}.roof-logo{width:96px;height:50px}.roof-service-line{font-size:10px}.roof-hero{min-height:220px}.hero-logo img{width:78%}.hero-copy h2{font-size:15px}.service-chips span{font-size:8px}.customer{grid-template-columns:1fr}.customer>div.wide{grid-column:auto}.buttons{grid-template-columns:1fr 1fr}.roof-stat b{font-size:17px}.invoice-info{grid-template-columns:1fr 1fr}.zoom-controls{top:82px}}
+
+
+#exportInvoice{position:fixed;left:-100000px;top:0;width:794px;background:#f7f3ec;color:#1a2229;visibility:hidden;z-index:-1;font-family:Arial,Tahoma,sans-serif;direction:rtl;padding:0}
+.ra-export-page{width:794px;min-height:1123px;background:#f7f3ec;padding:22px 26px 20px;box-sizing:border-box}
+.ra-export-header{background:#fff;border:1px solid #dccdb8;border-radius:14px;padding:14px 18px 12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.ra-export-logo{width:180px;height:82px;object-fit:contain;display:block;margin:0 auto 2px}.ra-export-brand{font-size:28px;font-weight:900;letter-spacing:.3px}.ra-export-desc{font-size:13px;font-weight:800;margin-top:1px}.ra-export-tag{font-size:11px;font-weight:800;color:#8f5f2e;margin-top:2px}.ra-export-service{font-size:17px;font-weight:900;margin-top:10px}.ra-export-services{font-size:10px;font-weight:800;color:#76502a;margin-top:5px}
+.ra-export-meta{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:6px;margin:9px 0}.ra-export-meta>div{background:#fff;border:1px solid #d8d1c8;border-radius:7px;padding:6px 8px;min-height:40px}.ra-export-meta .wide{grid-column:1/-1}.ra-export-meta span{display:block;color:#7b746d;font-size:8px;font-weight:700;margin-bottom:2px}.ra-export-meta b{font-size:10px;color:#1d252b}
+.ra-export-title{margin-top:8px;background:#202a31;color:#fff;border-right:5px solid #c49757;padding:6px 9px;font-size:11px;font-weight:900;border-radius:6px}.ra-export-table{width:100%;border-collapse:collapse;table-layout:fixed;margin-top:3px;background:#fff}.ra-export-table th,.ra-export-table td{border:1px solid #cfc8bf;padding:4px 3px;text-align:center;font-size:8px;line-height:1.25;word-break:break-word}.ra-export-table th{background:#eadfce;color:#4d351f;font-size:8px}.ra-export-table td.notes{text-align:right}.ra-export-mini-grid,.ra-export-totals{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px}.ra-export-mini-grid>div,.ra-export-totals>div{background:#fff;border:1px solid #d8d1c8;border-radius:7px;padding:6px;text-align:center}.ra-export-mini-grid span,.ra-export-totals span{display:block;color:#756e68;font-size:8px}.ra-export-mini-grid b,.ra-export-totals b{display:block;font-size:10px;margin-top:2px}.ra-export-totals{grid-template-columns:repeat(3,1fr)}.ra-export-totals .final{background:#eadfce;border-color:#c49757}.ra-export-totals .final b{color:#6f481f;font-size:12px}.ra-export-totals .remaining{background:#fff0e6}.ra-export-totals .remaining b{color:#b84d00}.ra-export-notes{margin-top:7px;background:#fff;border:1px solid #d8d1c8;border-radius:7px;padding:7px;font-size:9px;line-height:1.5}.ra-export-notes b{display:block;color:#6f481f;margin-bottom:3px}.ra-export-footer{margin-top:8px;border-top:2px solid #c49757;padding-top:7px;display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:8px}.ra-export-footer>b{font-size:10px;color:#6f481f}.ra-export-footer span{display:block}.ra-export-footer em{font-style:normal;padding:2px 4px;background:#eee7df;border-radius:3px;margin-right:3px}
+
+/* ===== Roof ART V10 — final mobile/layout overrides ===== */
+html,body{margin:0;padding:0;width:100%;min-width:0;overflow-x:hidden}
+body{background:#eef0f2;color:#18232d;font-family:Arial,Tahoma,sans-serif}
+.app{width:100%;max-width:1220px;margin:0 auto;padding:0 10px 92px;position:relative}
+.roof-main{margin-left:202px;min-width:0}
+.roof-header{min-height:94px;margin:0 0 10px;padding:10px 16px;background:#fff;border-radius:0 0 18px 18px;border-bottom:4px solid #c49757;display:flex;align-items:center;justify-content:space-between;gap:18px;box-shadow:0 5px 18px rgba(0,0,0,.08)}
+.roof-brand{display:flex;align-items:center;gap:10px;min-width:0}.roof-logo{width:160px;height:78px;object-fit:contain}.roof-brand-copy{display:flex;flex-direction:column;gap:2px}.roof-name{font-size:25px;font-weight:900}.roof-desc{font-size:12px;font-weight:800;color:#3f474e}.roof-tagline{font-size:11px;font-weight:800;color:#8f5f2e}.roof-service-line{font-size:19px;font-weight:900;color:#161d23;text-align:center;line-height:1.5;max-width:520px}
+.roof-sidebar{left:10px;top:10px;bottom:10px;width:182px;background:linear-gradient(180deg,#101820,#202a32);border-radius:18px;padding:14px 10px;z-index:45}.side-btn{color:#f7f8f8}.side-btn.active{color:#e1b46e}
+.roof-hero{min-height:310px;border-radius:14px;background-size:cover;background-position:center;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px 18px;overflow:hidden}.hero-copy h2{font-size:25px;line-height:1.45;margin:8px 0 16px}.hero-logo img{max-width:310px;width:55%;height:auto;max-height:105px;object-fit:contain}.service-chips{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}.service-chips span{font-size:12px;padding:7px 10px;border:1px solid rgba(225,180,110,.65);border-radius:20px;background:rgba(17,24,30,.72);color:#fff;font-weight:800}
+.roof-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:0 0 10px}.roof-stat{background:#fff;border:1px solid #e1e4e6;border-radius:13px;padding:13px;box-shadow:0 3px 12px rgba(0,0,0,.06)}.roof-stat b{font-size:21px;color:#17212b}.roof-stat small{color:#5e6870;font-size:11px;font-weight:800}
+.card,.more-card{background:#fff;border:1px solid #e3ded5;border-radius:12px;box-shadow:0 3px 14px rgba(17,26,34,.055);margin:7px 0;padding:10px}.section-title{color:#6f481f;font-size:16px;font-weight:900;border-right:4px solid #c49757;padding-right:8px;margin-bottom:9px}label{color:#39434b;font-size:12px;font-weight:800}input,textarea,select{color:#17212b;background:#fff;border:1px solid #c7cfd5;font-size:12px}input{height:38px}.customer{gap:8px}.quick-actions .btn{min-width:110px}
+/* Keep wood table exactly horizontal and readable */
+.table-wrapper{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.wood-table{min-width:930px;width:100%;table-layout:fixed}.wood-table th{background:#efe3d2;color:#4b321b;font-size:9px;height:36px}.wood-table td{font-size:9px;height:38px}.wood-table td input{font-size:10px;height:30px}
+/* Materials / manufacturing / payments are real tables too */
+.materials-table-wrap,.manufacturing-table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}.materials-table,.manufacturing-table,.payments-table{min-width:620px;width:100%;border-collapse:collapse;table-layout:fixed}.materials-table th,.materials-table td,.manufacturing-table th,.manufacturing-table td,.payments-table th,.payments-table td{border:1px solid #d2d8dc;padding:7px 5px;text-align:center;vertical-align:middle}.materials-table th,.manufacturing-table th,.payments-table th{background:#202a31;color:#fff;font-size:11px}.materials-table td,.manufacturing-table td,.payments-table td{font-size:11px}.materials-table input,.manufacturing-table input,.payments-table input{min-width:0;width:100%;height:34px;font-size:11px}.materials-table td:last-child button,.manufacturing-table td:last-child button,.payments-table td:last-child button{width:32px;height:30px;border:0;border-radius:6px;background:#c62828;color:#fff;font-weight:900;font-size:16px}
+.summary,.totals-grid,.discount-grid,.payments-grid{gap:8px}.summary-box{background:#fafbfc;border:1px solid #d7dee3}.summary-title{color:#5c6670;font-weight:800}.summary-value{color:#17212b}.final-total{background:#f3eadc;border-color:#d8b77e}.final-total .summary-title,.final-total .summary-value{color:#6f481f}
+.invoice-list{gap:8px}.invoice-item{background:#fff;border:1px solid #ddd7ce;border-radius:10px;padding:10px}.invoice-info div{border:1px solid #e4e7e9}.invoice-actions{grid-template-columns:repeat(3,1fr)}.invoice-actions button{height:36px}.invoice-filters{gap:7px}.invoice-filters button{font-size:11px}
+.more-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.more-card h3{color:#6f481f}.library-item{grid-template-columns:minmax(0,1fr) 100px auto}
+/* Zoom controls never cover navigation */
+.zoom-controls{position:fixed;left:8px;top:86px;bottom:auto;z-index:35;background:rgba(17,26,34,.96);padding:4px;border-radius:10px}.zoom-controls button{width:32px;height:32px}
+.fixed-total-bar{z-index:40}
+/* Dedicated page states */
+body.page-dashboard .invoice-editor-card,body.page-dashboard .invoice-list-card,body.page-dashboard #moreSection{display:none!important}
+body.page-invoices .invoice-editor-card,body.page-invoices #moreSection,body.page-invoices #homeTop,body.page-invoices .roof-stats,body.page-invoices #dashboardLatest{display:none!important}
+body.page-invoice-editor .invoice-list-card,body.page-invoice-editor #moreSection,body.page-invoice-editor #homeTop,body.page-invoice-editor .roof-stats,body.page-invoice-editor #dashboardLatest{display:none!important}
+body.page-more .invoice-editor-card,body.page-more .invoice-list-card,body.page-more #homeTop,body.page-more .roof-stats,body.page-more #dashboardLatest{display:none!important}
+#dashboardLatest{background:#fff;border:1px solid #e3ded5;border-radius:12px;padding:10px;margin:0 0 10px}.dashboard-latest-title{font-weight:900;color:#6f481f;font-size:16px;margin-bottom:8px}.dashboard-latest-list{display:grid;gap:7px}.dashboard-latest-item{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;align-items:center;border:1px solid #e2e5e7;border-radius:9px;padding:8px;background:#fafbfc}.dashboard-latest-item button{border:0;border-radius:7px;background:#6f481f;color:#fff;padding:7px 10px;font-weight:800}
+@media(max-width:900px){
+ body{font-size:14px}.app{max-width:none;padding:0 6px 86px}.roof-main{margin-left:0}.roof-sidebar{left:5px;right:5px;top:auto;bottom:5px;width:auto;height:64px;padding:5px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px;border-radius:16px}.roof-sidebar .side-btn:nth-child(6){display:none}.side-logo{display:none}.side-btn{justify-content:center;flex-direction:column;gap:2px;padding:4px 2px;font-size:10px}.side-btn span{flex:none}.roof-header{min-height:78px;padding:6px 8px;border-radius:0 0 14px 14px;gap:6px}.roof-logo{width:105px;height:55px}.roof-brand-copy{display:none}.roof-service-line{font-size:12px;max-width:62%;line-height:1.35}.roof-hero{min-height:235px;padding:16px 9px}.hero-copy h2{font-size:17px}.hero-logo img{width:70%;max-height:78px}.service-chips{gap:5px}.service-chips span{font-size:9px;padding:5px 7px}.roof-stats{grid-template-columns:repeat(2,1fr);gap:6px}.roof-stat{padding:9px}.roof-stat b{font-size:18px}.card,.more-card{margin:5px 0;padding:8px}.section-title{font-size:14px}.customer{grid-template-columns:1fr 1fr}.customer>div.wide{grid-column:1/-1}.more-grid{grid-template-columns:1fr}.invoice-actions{grid-template-columns:1fr 1fr 1fr}.dashboard-latest-item{grid-template-columns:1fr 1fr}.dashboard-latest-item button{grid-column:1/-1}.zoom-controls{top:88px;left:6px}.zoom-controls button{width:30px;height:30px}.materials-table,.manufacturing-table,.payments-table{min-width:620px}.wood-table{min-width:930px}
+}
+@media(max-width:480px){.roof-header{min-height:74px}.roof-logo{width:96px;height:50px}.roof-service-line{font-size:10px}.roof-hero{min-height:220px}.hero-logo img{width:78%}.hero-copy h2{font-size:15px}.service-chips span{font-size:8px}.customer{grid-template-columns:1fr}.customer>div.wide{grid-column:auto}.buttons{grid-template-columns:1fr 1fr}.roof-stat b{font-size:17px}.invoice-info{grid-template-columns:1fr 1fr}.zoom-controls{top:82px}}
+
 </style>
 </head>
 
@@ -928,6 +1001,10 @@ body.ra-dark{background:#10161b;color:#eef2f4}body.ra-dark .card,body.ra-dark .m
   <div class="roof-stat"><b id="dashRemaining">0.00</b><small>المتبقي</small></div>
 </section>
 
+<section id="dashboardLatest" class="no-print">
+  <div class="dashboard-latest-title">آخر الفواتير</div>
+  <div id="dashboardLatestList" class="dashboard-latest-list"><div class="small-note">سجل الدخول لعرض الفواتير</div></div>
+</section>
 
 <div id="invoiceTop"></div>
 <!-- بيانات الفاتورة -->
@@ -1984,19 +2061,28 @@ function collectInvoice(){
 ===================================================== */
 
 async function allocateInvoiceNumber(){
+  // Prefer the safe Firestore counter, but do not let a missing counter permission block saving.
   const ref=doc(db,"users",currentUser.uid,"counters","invoices");
-  const current=await getDoc(ref);
   let initial=1;
-  if(!current.exists()){
-    const invSnap=await getDocs(collection(db,"users",currentUser.uid,"invoices"));
-    invSnap.forEach(d=>{const n=parseInt(d.data().number);if(!isNaN(n))initial=Math.max(initial,n+1);});
+  try{
+    const current=await getDoc(ref);
+    if(!current.exists()){
+      const invSnap=await getDocs(collection(db,"users",currentUser.uid,"invoices"));
+      invSnap.forEach(d=>{const n=parseInt(d.data().number);if(!isNaN(n))initial=Math.max(initial,n+1);});
+    }
+    return await runTransaction(db,async tx=>{
+      const snap=await tx.get(ref);
+      const next=snap.exists()?Math.max(num(snap.data().next),initial):initial;
+      tx.set(ref,{next:next+1,updatedAt:new Date().toISOString()},{merge:true});
+      return String(next).padStart(6,"0");
+    });
+  }catch(counterError){
+    console.warn("Invoice counter unavailable; using compatibility fallback",counterError);
+    const snap=await getDocs(collection(db,"users",currentUser.uid,"invoices"));
+    let max=0;
+    snap.forEach(d=>{const n=parseInt(d.data().number);if(!isNaN(n))max=Math.max(max,n);});
+    return String(max+1).padStart(6,"0");
   }
-  return runTransaction(db,async tx=>{
-    const snap=await tx.get(ref);
-    const next=snap.exists()?Math.max(num(snap.data().next),initial):initial;
-    tx.set(ref,{next:next+1,updatedAt:new Date().toISOString()},{merge:true});
-    return String(next).padStart(6,"0");
-  });
 }
 async function saveCustomer(){
   if(!currentUser || !client.value.trim()) return;
@@ -2005,14 +2091,27 @@ async function saveCustomer(){
 }
 document.getElementById("save").addEventListener("click",async function(){
   if(!currentUser){alert("🔐 يجب تسجيل الدخول بحساب Google أولاً");return;}
+  const btn=this;
   try{
-    syncStatus.textContent="☁️ جاري حفظ الفاتورة...";
+    btn.disabled=true; syncStatus.textContent="☁️ جاري حفظ الفاتورة...";
     if(!editingInvoiceId){ invoiceNumber.value=await allocateInvoiceNumber(); }
+    if(!invoiceNumber.value || invoiceNumber.value.includes("سيتم")) throw new Error("تعذر إنشاء رقم الفاتورة");
     const invoice=collectInvoice();
-    invoice.createdAt=editingInvoiceId?(allInvoices.find(x=>x.id===editingInvoiceId)?.createdAt||invoice.updatedAt):invoice.updatedAt;
+    const existing=editingInvoiceId?allInvoices.find(x=>x.id===editingInvoiceId):null;
+    invoice.createdAt=existing?.createdAt||invoice.updatedAt;
     const ref=editingInvoiceId?doc(db,"users",currentUser.uid,"invoices",editingInvoiceId):doc(db,"users",currentUser.uid,"invoices",invoice.number);
-    await setDoc(ref,invoice,{merge:false}); editingInvoiceId=ref.id; await saveCustomer(); editBadge.classList.add("show"); syncStatus.textContent="☁️ تم الحفظ بنجاح"; await loadInvoices(); await loadCustomers(); alert("✅ تم حفظ الفاتورة رقم "+invoice.number);
-  }catch(error){console.error(error);syncStatus.textContent="❌ فشل الحفظ";alert("❌ حدث خطأ أثناء الحفظ:\n\n"+(error.code||"")+"\n"+error.message);}
+    await setDoc(ref,invoice,{merge:false});
+    editingInvoiceId=ref.id;
+    // Customer data must never make a successfully saved invoice look like a failed save.
+    try{await saveCustomer();}catch(customerError){console.warn("Customer save failed",customerError);}
+    editBadge.classList.add("show"); syncStatus.textContent="☁️ تم حفظ الفاتورة بنجاح";
+    await loadInvoices(); await loadCustomers();
+    alert("✅ تم حفظ الفاتورة رقم "+invoice.number);
+  }catch(error){
+    console.error("Invoice save error",error);
+    syncStatus.textContent="❌ فشل حفظ الفاتورة";
+    alert("❌ لم يتم حفظ الفاتورة\n\n"+(error.code||"")+"\n"+(error.message||error));
+  }finally{btn.disabled=false;}
 });
 
 /* =====================================================
@@ -2247,206 +2346,63 @@ function money(value){
 
 
 function buildExportInvoice(result){
-
-    const clientName =
-        client.value.trim() || "عميل";
-
-    const rows =
-        Array.from(
-            woodBody.querySelectorAll("tr")
-        );
-
-    let woodRows = "";
-
-    rows.forEach(function(row,index){
-
-        const get = cls => row.querySelector("." + cls);
-        const length = num(get("length")?.value);
-        const width = num(get("width")?.value);
-        const thickness = num(get("thickness")?.value);
-        const quantity = num(get("quantity")?.value);
-        const volume = num(row.querySelector(".volume")?.textContent);
-        const price = num(get("price")?.value);
-        const total = num(row.querySelector(".row-total")?.textContent);
-        const notes = get("note")?.value || "";
-
-        if(
-            !length &&
-            !width &&
-            !thickness &&
-            !quantity &&
-            !volume &&
-            !price &&
-            !total &&
-            !notes.trim()
-        ){
-            return;
-        }
-
-        woodRows += `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${thickness || "-"}</td>
-                <td>${width || "-"}</td>
-                <td>${length || "-"}</td>
-                <td>${quantity || "-"}</td>
-                <td>${volume.toFixed(6)}</td>
-                <td>${price.toFixed(2)}</td>
-                <td>${total.toFixed(2)}</td>
-                <td class="notes">${escapeHTML(notes || "-")}</td>
-            </tr>`;
-
-    });
-
-    if(!woodRows){
-        woodRows = `
-            <tr>
-                <td colspan="9">لا توجد أخشاب مضافة</td>
-            </tr>`;
-    }
-
-
-    const materialRows = Array.from(materialsBody.querySelectorAll("tr.material-row"));
-
-    let otherRows = "";
-
-    materialRows.forEach(function(row){
-
-        const name = row.querySelector(".material-name")?.value || "";
-        const qty = num(row.querySelector(".material-qty")?.value);
-        const unit = num(row.querySelector(".material-unit-price")?.value);
-        const value = qty * unit;
-
-        if(!name.trim() && !value){
-            return;
-        }
-
-        otherRows += `
-            <tr>
-                <td>${escapeHTML(name || "-")}</td>
-                <td>${value.toFixed(2)} جنيه</td>
-            </tr>`;
-
-    });
-
-    if(!otherRows){
-        otherRows = `
-            <tr>
-                <td colspan="2">لا توجد خامات أخرى</td>
-            </tr>`;
-    }
-
-
-    exportInvoice.innerHTML = `
-        <div class="export-header">
-            <img src="${document.querySelector('.roof-logo')?.src || ''}" style="width:210px;height:auto;max-height:100px;object-fit:contain" alt="Roof ART"><div style="font-size:22px;font-weight:900">Roof ART</div><p>فن تصنيع الأخشاب • خبرة • إتقان • تميّز</p><p style="font-weight:800">تصميم وتنفيذ أعمال الروف والديكورات الخشبية</p><p style="font-size:10px">تجاليد حوائط • برجولات • أسوار حدائق • أرضيات باركيه • سلالم خشبية</p>
-            <div class="export-contacts">
-                <span>الحاج محمد: <b>01006772347</b></span>
-                <span>أ/ محمد البرجيسي: <b>01013775022</b> <em>Vodafone Cash</em> <em>InstaPay</em></span>
-            </div>
-        </div>
-
-        <div class="export-info">
-            <div class="export-info-box">
-                <strong>اسم العميل</strong>
-                ${escapeHTML(clientName)}
-            </div>
-            <div class="export-info-box">
-                <strong>رقم الفاتورة</strong>
-                ${escapeHTML(invoiceNumber.value || "-")}
-            </div>
-            <div class="export-info-box">
-                <strong>التاريخ</strong>
-                ${escapeHTML(date.value || "-")}
-            </div>
-        </div>
-
-        <div class="export-section-title">🪵 حساب الأخشاب</div>
-
-        <table class="export-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>السمك<br>سم</th>
-                    <th>العرض<br>سم</th>
-                    <th>الطول<br>سم</th>
-                    <th>العدد</th>
-                    <th>الحجم<br>م³</th>
-                    <th>السعر<br>/م³</th>
-                    <th>الإجمالي</th>
-                    <th>ملاحظات</th>
-                </tr>
-            </thead>
-            <tbody>${woodRows}</tbody>
-        </table>
-
-        <div class="export-summary">
-            <div class="export-box">
-                <div class="title">إجمالي الحجم</div>
-                <div class="value">${result.totalVolume.toFixed(6)} م³</div>
-            </div>
-            <div class="export-box">
-                <div class="title">إجمالي الأخشاب</div>
-                <div class="value">${money(result.woodTotal)}</div>
-            </div>
-            <div class="export-box">
-                <div class="title">التصنيع</div>
-                <div class="value">${money(result.manufacturingValue)}</div>
-            </div>
-            <div class="export-box">
-                <div class="title">خامات أخرى</div>
-                <div class="value">${money(result.materialsTotal)}</div>
-            </div>
-        </div>
-
-        <div class="export-section-title">🛠️ التصنيع</div><table class="export-materials"><thead><tr><th>العمل</th><th>القيمة</th></tr></thead><tbody>${result.manufacturingRows.map(x=>`<tr><td>${escapeHTML(x.product||"-")}</td><td>${money(x.price)}</td></tr>`).join("")||'<tr><td colspan="2">لا يوجد</td></tr>'}</tbody></table>
-
-        <div class="export-section-title">🧰 الخامات الأخرى</div>
-
-        <table class="export-materials">
-            <thead>
-                <tr>
-                    <th>الخامة</th>
-                    <th>القيمة</th>
-                </tr>
-            </thead>
-            <tbody>${otherRows}</tbody>
-        </table>
-
-        <div class="export-payment">
-            <div class="export-box"><div class="title">قبل الخصم</div><div class="value">${money(result.subtotal)}</div></div>
-            <div class="export-box"><div class="title">الخصم</div><div class="value">${money(result.discount)}</div></div>
-            <div class="export-box">
-                <div class="title">الإجمالي النهائي</div>
-                <div class="value">${money(result.finalTotal)}</div>
-            </div>
-            <div class="export-box">
-                <div class="title">المدفوع</div>
-                <div class="value">${money(result.paidValue)}</div>
-            </div>
-            <div class="export-box">
-                <div class="title">المتبقي</div>
-                <div class="value">${money(Math.max(0,result.remaining))}</div>
-            </div>
-        </div>
-
-        <div style="margin-top:10px;padding:8px;border:1px solid #ddd;border-radius:6px"><b>الدفعات:</b> ${result.payments.map((p,i)=>`دفعة ${i+1}: ${money(p.amount)} — ${escapeHTML(p.date||"")} ${escapeHTML(p.note||"")}`).join(" | ")||"لا توجد دفعات"}</div>
-        <div style="margin-top:8px"><b>ملاحظات الفاتورة:</b> ${escapeHTML(invoiceNotes.value||"-")}</div>
-        <div class="export-footer">
-            <div style="font-weight:bold;color:#17324d;margin-bottom:5px;text-align:right;">Roof ART - فن تصنيع الأخشاب</div>
-            <div style="text-align:right;line-height:1.8;">
-                📞 الحاج محمد: <b dir="ltr">01006772347</b><br>
-                📞 أ/ محمد البرجيسي: <b dir="ltr">01013775022</b>
-                <span style="display:inline-block;margin-right:5px;padding:2px 4px;border-radius:3px;background:#f1f3f5;color:#c62828;font-size:8px;">Vodafone Cash</span>
-                <span style="display:inline-block;margin-right:3px;padding:2px 4px;border-radius:3px;background:#f1f3f5;color:#6a1b9a;font-size:8px;">InstaPay</span>
-            </div>
-        </div>
-    `;
-
-    return safeFileName(clientName);
-
+  const clientName=client.value.trim()||"عميل";
+  const logo=document.querySelector('.roof-logo')?.src||'';
+  const rows=Array.from(woodBody.querySelectorAll('tr'));
+  let woodRows=''; let woodIndex=0;
+  rows.forEach(row=>{
+    const get=cls=>row.querySelector('.'+cls);
+    const length=num(get('length')?.value), width=num(get('width')?.value), thickness=num(get('thickness')?.value), quantity=num(get('quantity')?.value);
+    const volume=num(row.querySelector('.volume')?.textContent), price=num(get('price')?.value), total=num(row.querySelector('.row-total')?.textContent), notes=get('note')?.value||'';
+    if(!length&&!width&&!thickness&&!quantity&&!volume&&!price&&!total&&!notes.trim())return;
+    woodIndex++;
+    woodRows+=`<tr><td>${woodIndex}</td><td>${length||'-'}</td><td>${width||'-'}</td><td>${thickness||'-'}</td><td>${quantity||'-'}</td><td>${volume.toFixed(6)}</td><td>${price.toFixed(2)}</td><td>${total.toFixed(2)}</td><td class="notes">${escapeHTML(notes||'-')}</td></tr>`;
+  });
+  if(!woodRows)woodRows='<tr><td colspan="9">لا توجد أخشاب مضافة</td></tr>';
+  const materialRows=Array.from(materialsBody.querySelectorAll('tr.material-row')).map((row,i)=>{
+    const name=row.querySelector('.material-name')?.value||''; const qty=num(row.querySelector('.material-qty')?.value); const unit=num(row.querySelector('.material-unit-price')?.value); if(!name.trim()&&!unit)return ''; return `<tr><td>${i+1}</td><td>${escapeHTML(name||'-')}</td><td>${qty||'-'}</td><td>${unit.toFixed(2)}</td><td>${(qty*unit).toFixed(2)}</td></tr>`;
+  }).filter(Boolean).join('')||'<tr><td colspan="5">لا توجد خامات أخرى</td></tr>';
+  const manufacturingRows=(result.manufacturingRows||[]).map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHTML(x.product||'-')}</td><td>${money(x.price)}</td></tr>`).join('')||'<tr><td colspan="3">لا يوجد تصنيع</td></tr>';
+  const paymentsRows=(result.payments||[]).map((p,i)=>`<tr><td>${i+1}</td><td>${money(p.amount)}</td><td>${escapeHTML(p.date||'-')}</td><td>${escapeHTML(p.note||'-')}</td></tr>`).join('')||'<tr><td colspan="4">لا توجد دفعات</td></tr>';
+  const discountLabel=discountType.value==='percent'?`${num(discountValue.value)}%`:`${money(result.discount)}`;
+  exportInvoice.innerHTML=`
+  <div class="ra-export-page">
+    <div class="ra-export-header">
+      <img src="${logo}" alt="Roof ART" class="ra-export-logo">
+      <div class="ra-export-brand">Roof ART</div>
+      <div class="ra-export-desc">فن تصنيع الأخشاب</div>
+      <div class="ra-export-tag">خبرة • إتقان • تميّز</div>
+      <div class="ra-export-service">تصميم وتنفيذ أعمال الروف والديكورات الخشبية</div>
+      <div class="ra-export-services">تجاليد حوائط&nbsp; • &nbsp;برجولات&nbsp; • &nbsp;أسوار حدائق&nbsp; • &nbsp;أرضيات باركيه&nbsp; • &nbsp;سلالم خشبية</div>
+    </div>
+    <div class="ra-export-meta">
+      <div><span>العميل</span><b>${escapeHTML(clientName)}</b></div>
+      <div><span>رقم الفاتورة</span><b>${escapeHTML(invoiceNumber.value||'-')}</b></div>
+      <div><span>التاريخ</span><b>${escapeHTML(date.value||'-')}</b></div>
+      <div><span>الهاتف</span><b dir="ltr">${escapeHTML(clientPhone.value||'-')}</b></div>
+      <div class="wide"><span>العنوان</span><b>${escapeHTML(clientAddress.value||'-')}</b></div>
+    </div>
+    <div class="ra-export-title">🪵 الأخشاب</div>
+    <table class="ra-export-table"><thead><tr><th>#</th><th>الطول سم</th><th>العرض سم</th><th>السمك سم</th><th>العدد</th><th>الحجم م³</th><th>السعر /م³</th><th>الإجمالي</th><th>ملاحظات</th></tr></thead><tbody>${woodRows}</tbody></table>
+    <div class="ra-export-mini-grid"><div><span>إجمالي الحجم</span><b>${result.totalVolume.toFixed(6)} م³</b></div><div><span>إجمالي الأخشاب</span><b>${money(result.woodTotal)}</b></div></div>
+    <div class="ra-export-title">🧰 الخامات الأخرى</div>
+    <table class="ra-export-table"><thead><tr><th>#</th><th>الصنف</th><th>العدد</th><th>سعر الوحدة</th><th>الإجمالي</th></tr></thead><tbody>${materialRows}</tbody></table>
+    <div class="ra-export-title">🛠️ التصنيع</div>
+    <table class="ra-export-table"><thead><tr><th>#</th><th>العمل / المنتج</th><th>القيمة</th></tr></thead><tbody>${manufacturingRows}</tbody></table>
+    <div class="ra-export-title">💳 الدفعات</div>
+    <table class="ra-export-table"><thead><tr><th>#</th><th>المبلغ</th><th>التاريخ</th><th>ملاحظة</th></tr></thead><tbody>${paymentsRows}</tbody></table>
+    <div class="ra-export-totals">
+      <div><span>قبل الخصم</span><b>${money(result.subtotal)}</b></div>
+      <div><span>الخصم</span><b>${discountLabel}</b></div>
+      <div class="final"><span>الإجمالي النهائي</span><b>${money(result.finalTotal)}</b></div>
+      <div><span>إجمالي المدفوع</span><b>${money(result.paidValue)}</b></div>
+      <div class="remaining"><span>المتبقي</span><b>${money(Math.max(0,result.remaining))}</b></div>
+    </div>
+    <div class="ra-export-notes"><b>ملاحظات الفاتورة</b><div>${escapeHTML(invoiceNotes.value||'-')}</div></div>
+    <div class="ra-export-footer"><b>للتواصل والاستفسار</b><span>الحاج محمد مخلوف — <strong dir="ltr">01006772347</strong></span><span>أ/ محمد البرجيسي — <strong dir="ltr">01013775022</strong> &nbsp; <em>InstaPay</em> <em>Vodafone Cash</em></span></div>
+  </div>`;
+  return safeFileName(clientName);
 }
-
 
 function openShareChooser(){
 
@@ -2478,46 +2434,13 @@ function closeShareChooser(){
 
 
 async function makeInvoiceCanvas(){
-
-    const result = calculate();
-
-    const fileName =
-        buildExportInvoice(result);
-
-    /* إظهار المنطقة للحظات حتى تعمل html2canvas بشكل موثوق */
-    exportInvoice.style.left = "0";
-    exportInvoice.style.top = "0";
-    exportInvoice.style.zIndex = "-1";
-
-    await new Promise(function(resolve){
-        requestAnimationFrame(function(){
-            requestAnimationFrame(resolve);
-        });
-    });
-
-    const canvas =
-        await html2canvas(
-            exportInvoice,
-            {
-                scale:2,
-                backgroundColor:"#ffffff",
-                useCORS:true,
-                logging:false,
-                width:794,
-                windowWidth:794
-            }
-        );
-
-    exportInvoice.style.left = "-100000px";
-    exportInvoice.style.zIndex = "-1";
-
-    return {
-        canvas,
-        fileName
-    };
-
+  const result=calculate(); buildExportInvoice(result);
+  exportInvoice.style.left='0'; exportInvoice.style.top='0'; exportInvoice.style.zIndex='-1'; exportInvoice.style.visibility='visible';
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const canvas=await html2canvas(exportInvoice,{scale:2,backgroundColor:'#f7f3ec',useCORS:true,allowTaint:true,logging:false,width:794,windowWidth:794});
+  exportInvoice.style.left='-100000px'; exportInvoice.style.visibility='hidden';
+  return {canvas,fileName:safeFileName(client.value.trim()||'فاتورة Roof ART')};
 }
-
 
 async function shareBlob(blob,fileName,mimeType,title){
 
@@ -2606,7 +2529,7 @@ async function shareInvoiceAsImage(){
         blob,
         data.fileName + ".png",
         "image/png",
-        "Wood ART - صورة الفاتورة"
+        "Roof ART - صورة الفاتورة"
     );
 
 }
@@ -2846,6 +2769,61 @@ async function initMore(){loadLibraries();await loadCustomers();await loadTrash(
 
 document.getElementById("quickCalcBtn").onclick=async()=>{await prepareNewInvoice();client.value="";invoiceNotes.value="حساب سريع - لم يتم حفظه كفاتورة بعد";document.getElementById("invoiceTop").scrollIntoView({behavior:"smooth"});syncStatus.textContent="⚡ وضع الحساب السريع — لن يتم الحفظ إلا عند الضغط على حفظ";};
 
+
+/* ===== Roof ART V10 navigation + dashboard ===== */
+(function(){
+  const markSections=()=>{
+    const top=document.getElementById('invoiceTop');
+    if(top){
+      let n=top.nextElementSibling;
+      while(n){
+        if(n.id==='moreSection') break;
+        if(n.id==='invoiceList') break;
+        if(n.classList?.contains('card')) n.classList.add('invoice-editor-card');
+        n=n.nextElementSibling;
+      }
+    }
+    const list=document.getElementById('invoiceList');
+    if(list?.parentElement) list.parentElement.classList.add('invoice-list-card');
+  };
+  markSections();
+  const latest=document.getElementById('dashboardLatestList');
+  function renderLatest(){
+    if(!latest)return;
+    const arr=allInvoices.slice().sort((a,b)=>String(b.updatedAt||b.date||'').localeCompare(String(a.updatedAt||a.date||''))).slice(0,5);
+    latest.innerHTML=arr.length?arr.map(inv=>`<div class="dashboard-latest-item"><span><b>فاتورة ${escapeHTML(inv.number||'-')}</b></span><span>${escapeHTML(inv.client||'-')}</span><span>${money(inv.finalTotal)}</span><button data-latest="${escapeHTML(inv.id)}">فتح</button></div>`).join(''):'<div class="small-note">لا توجد فواتير محفوظة حاليًا</div>';
+    latest.querySelectorAll('[data-latest]').forEach(b=>b.onclick=()=>{loadInvoice(b.dataset.latest);showPage('invoice-editor');});
+  }
+  window.showPage=function(page){
+    document.body.classList.remove('page-dashboard','page-invoices','page-invoice-editor','page-more');
+    document.body.classList.add('page-'+page);
+    if(page==='invoice-editor')document.getElementById('invoiceTop')?.scrollIntoView({behavior:'smooth',block:'start'});
+    else window.scrollTo({top:0,behavior:'smooth'});
+    document.querySelectorAll('.side-btn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+    if(page==='dashboard')renderLatest();
+  };
+  const buttons=document.querySelectorAll('.side-btn[data-target]');
+  buttons.forEach((b,i)=>{
+    b.dataset.page=i===0?'dashboard':i===1?'invoices':i===2?'invoice-editor':i===3?'invoice-editor':'more';
+    b.addEventListener('click',e=>{
+      e.preventDefault();
+      if(b.dataset.page==='invoice-editor' && b.dataset.target==='customerTop') showPage('invoice-editor');
+      else showPage(b.dataset.page);
+    });
+  });
+  const newBtn=document.getElementById('newInvoice');
+  newBtn?.addEventListener('click',()=>showPage('invoice-editor'));
+  const quick=document.getElementById('quickCalcBtn');
+  quick?.addEventListener('click',()=>showPage('invoice-editor'));
+  const oldRender=window.renderInvoices;
+  if(typeof oldRender==='function'){
+    const original=oldRender;
+    window.renderInvoices=function(){original.apply(this,arguments);renderLatest();};
+  }
+  const observer=new MutationObserver(renderLatest); const il=document.getElementById('invoiceList'); if(il)observer.observe(il,{childList:true,subtree:true});
+  showPage('dashboard');
+})();
+
 /* =====================================================
    PAGE ZOOM
 ===================================================== */
@@ -2880,47 +2858,12 @@ calculate();
 applySettings();
 
 
-/* ===== Roof ART dashboard counters + pinch zoom ===== */
+/* ===== Roof ART V10 pinch zoom persistence ===== */
 (function(){
-  const updateDash=()=>{
-    const list=document.querySelectorAll('#invoiceList .invoice-item, #invoiceList .invoice-card, #invoiceList > div');
-    const count=list.length;
-    const dc=document.getElementById('dashInvoiceCount'); if(dc && count) dc.textContent=count;
-    const cc=document.getElementById('dashCustomerCount');
-    if(cc){
-      const names=new Set();
-      document.querySelectorAll('#invoiceList [data-client], #invoiceList .client-name').forEach(x=>names.add((x.textContent||'').trim()));
-      if(names.size) cc.textContent=names.size;
-    }
-  };
-  const obs=new MutationObserver(updateDash);
-  const il=document.getElementById('invoiceList'); if(il) obs.observe(il,{childList:true,subtree:true});
-  setTimeout(updateDash,1200);
-
-  let lastDist=0, startZoom=1;
-  document.addEventListener('touchstart',e=>{
-    if(e.touches.length===2){lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);startZoom=document.body.style.zoom?parseFloat(document.body.style.zoom):1;}
-  },{passive:true});
-  document.addEventListener('touchmove',e=>{
-    if(e.touches.length===2 && lastDist){
-      const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
-      const factor=dist/lastDist;
-      if(Math.abs(factor-1)>.015){
-        let z=Math.min(1.35,Math.max(.75,startZoom*factor));
-        document.body.style.zoom=z;
-        const zl=document.getElementById('zoomLevel'); if(zl) zl.textContent=Math.round(z*100)+'%';
-      }
-      e.preventDefault();
-    }
-  },{passive:false});
-  document.addEventListener('touchend',e=>{if(e.touches.length<2){lastDist=0;}},{passive:true});
-
-  document.querySelectorAll('.side-btn[data-target]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const el=document.getElementById(btn.dataset.target); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-      document.querySelectorAll('.side-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
-    });
-  });
+  let lastDist=0,startZoom=1;
+  document.addEventListener('touchstart',e=>{if(e.touches.length===2){lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);startZoom=pageZoom;}},{passive:true});
+  document.addEventListener('touchmove',e=>{if(e.touches.length===2&&lastDist){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const factor=dist/lastDist;if(Math.abs(factor-1)>.02){pageZoom=Math.min(1.5,Math.max(.8,startZoom*factor));document.body.style.zoom=pageZoom;zoomLevel.textContent=Math.round(pageZoom*100)+'%';}e.preventDefault();}},{passive:false});
+  document.addEventListener('touchend',e=>{if(e.touches.length<2){if(lastDist){localStorage.setItem('woodArtZoom',pageZoom.toFixed(2));}lastDist=0;}},{passive:true});
 })();
 
 </script>
