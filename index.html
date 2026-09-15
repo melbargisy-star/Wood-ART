@@ -15,11 +15,20 @@
 <div id="modalRoot"></div>
 <div id="toastRoot"></div>
 <div id="export" class="export"></div>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js" onerror="console.error('Firebase App SDK failed to load')"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js" onerror="console.error('Firebase Auth SDK failed to load')"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js" onerror="console.error('Firebase Firestore SDK failed to load')"></script>
 <script>
-
+(function(){
+const bootStarted=Date.now();
+function showBootError(title, err){
+  const msg = err && (err.stack || err.message) ? (err.stack || err.message) : String(err || "خطأ غير معروف");
+  const app=document.getElementById("app");
+  if(app) app.innerHTML=`<main class="app login"><section class="card loginbox"><div class="loginlogo">Roof ART</div><div class="title">تعذر تشغيل البرنامج</div><p class="muted">الواجهة نفسها تعمل، لكن حدث خطأ أثناء تحميل مكونات البرنامج.</p><pre style="direction:ltr;text-align:left;white-space:pre-wrap;background:#f5f5f5;padding:10px;border-radius:8px;font-size:11px;max-height:240px;overflow:auto">${String(msg).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}</pre><button class="btn primary" onclick="location.reload()">إعادة المحاولة</button></section></main>`;
+  console.error(title, err);
+}
+try{
+if(!window.firebase) throw new Error("Firebase SDK لم يتم تحميله. تحقق من اتصال الإنترنت أو تحميل ملفات Firebase.");
 
 const firebaseConfig={apiKey:'AIzaSyBwr4Z0k0G13g-iRnAKpQfXhbugsU20kvg',authDomain:'wood-art-8a7d6.firebaseapp.com',projectId:'wood-art-8a7d6',storageBucket:'wood-art-8a7d6.firebasestorage.app',messagingSenderId:'362506972779',appId:'1:362506972779:web:d3bd442a754bb832cdcb2e'};
 firebase.initializeApp(firebaseConfig);
@@ -136,6 +145,8 @@ async function shareOrDownload(blob,name,type,title){const file=new File([blob],
 function buildExport(inv){const w=inv.woods.filter(r=>n(r.count)||n(r.length)||n(r.width)||n(r.thickness)||n(r.unitPrice)||r.notes).map((r,i)=>`<tr><td>${i+1}</td><td>${n(r.count)||'-'}</td><td>${n(r.length)||'-'}</td><td>${n(r.width)||'-'}</td><td>${n(r.thickness)||'-'}</td><td>${n(r.quantityM3).toFixed(3)}</td><td>${money(r.unitPrice)}</td><td>${money(r.total)}</td><td>${esc(r.notes||'-')}</td></tr>`).join('');const m=inv.extraMaterials.filter(r=>r.name||n(r.quantity)||n(r.unitPrice)).map(r=>`<tr><td>${n(r.quantity)}</td><td>${esc(r.name)}</td><td>${money(r.unitPrice)}</td><td>${money(r.total)}</td></tr>`).join('');const man=inv.manufacturing.filter(r=>r.product||n(r.price)).map(r=>`<tr><td>${esc(r.product)}</td><td>${money(r.price)}</td></tr>`).join('');return `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>Roof ART</title><body style="font-family:Arial;padding:30px;max-width:900px;margin:auto"><h1>Roof ART</h1><b>فن تصنيع الأخشاب</b><p>خبرة • إتقان • تميّز</p><hr><p>فاتورة: ${esc(inv.invoiceNumber||'مسودة')} — التاريخ: ${esc(inv.date)}</p><p>العميل: ${esc(inv.customer.name)} — ${esc(inv.customer.phone)}</p><h3>① الأخشاب</h3><table border="1" cellspacing="0" cellpadding="6" width="100%"><tr><th>#</th><th>العدد</th><th>الطول</th><th>العرض</th><th>السمك</th><th>م³</th><th>سعر المتر</th><th>الإجمالي</th><th>ملاحظات</th></tr>${w}</table><h3>② الخامات الإضافية</h3><table border="1" cellspacing="0" cellpadding="6" width="100%"><tr><th>العدد</th><th>الصنف</th><th>السعر</th><th>الإجمالي</th></tr>${m}</table><h3>③ التصنيع</h3><table border="1" cellspacing="0" cellpadding="6" width="100%"><tr><th>المنتج</th><th>السعر</th></tr>${man}</table><hr><p>الأخشاب: ${money(inv.totals.wood)}</p><p>الخامات: ${money(inv.totals.materials)}</p><p>التصنيع: ${money(inv.totals.manufacturing)}</p><p>قبل الخصم: ${money(inv.totals.beforeDiscount)}</p><p>الخصم: ${money(inv.totals.discount)}</p><h2>الإجمالي النهائي: ${money(inv.totals.finalTotal)}</h2><p>المدفوع: ${money(inv.totals.paid)}</p><p>المتبقي: ${money(inv.totals.remaining)}</p><h3>ملاحظات</h3><p>${esc(inv.invoiceNotes||'-')}</p><hr><p>الحاج محمد مخلوف — 01006772347<br>أ/ محمد البرجيسي — 01013775022<br>💳 InstaPay · Vodafone Cash</p></body></html>`}
 
 window.addEventListener('online',()=>{if(user)loadAll()});window.addEventListener('offline',()=>setSync('غير متصل — حفظ محلي','off'));onAuthStateChanged(auth,async u=>{user=u;if(user){await ensureProfile();await loadAll()}else render()});applySettings();
+}catch(e){showBootError('Roof ART boot error',e);}
+})();
 </script>
 </body>
 </html>
