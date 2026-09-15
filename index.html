@@ -71,10 +71,41 @@ function blankWood(){return {count:'',length:'',width:'',thickness:'',quantityM3
 function blankMaterial(){return {name:'',quantity:'',unitPrice:'',total:0}}
 function blankManufacturing(){return {product:'',price:''}}
 function calc(inv){inv.woods=(inv.woods||[]).map(r=>{const q=n(r.count)*n(r.length)*n(r.width)*n(r.thickness)/1000000;return {...r,quantityM3:q,total:q*n(r.unitPrice)}});inv.extraMaterials=(inv.extraMaterials||[]).map(r=>({...r,total:n(r.quantity)*n(r.unitPrice)}));inv.manufacturing=inv.manufacturing||[];const wood=inv.woods.reduce((a,r)=>a+n(r.total),0),mat=inv.extraMaterials.reduce((a,r)=>a+n(r.total),0),man=inv.manufacturing.reduce((a,r)=>a+n(r.price),0),before=wood+mat+man;let discount=n(inv.discount?.value);if(inv.discount?.type==='percent')discount=before*discount/100;const final=Math.max(0,before-discount),paid=(inv.payments||[]).reduce((a,p)=>a+n(p.amount),0),remaining=Math.max(0,final-paid);const status=inv.status==='draft'?'draft':remaining<=0&&final>0?'paid':paid>0?'partial':'unpaid';return {...inv,totals:{wood,materials:mat,manufacturing:man,beforeDiscount:before,discount,finalTotal:final,paid,remaining},status}}
-async function reserveInvoiceNumber(){const ref=doc(db,'users',user.uid,'counters','invoiceNumber');return runTransaction(db,async tx=>{const snap=await tx.get(ref);const next=(snap.exists()?n(snap.data().next):1);tx.set(ref,{next:next+1,updatedAt:serverTimestamp()},{merge:true});return String(next).padStart(6,'0')})}
+async function reserveInvoiceNumber(){const ref=doc(db,'users',user.uid,'counters','invoiceNumber');return runTransaction(db,async tx=>{const snap=await tx.get(ref);let next=snap.exists()?n(snap.data().next):1;if(!snap.exists() && invoices.length){next=Math.max(1,...invoices.map(x=>n(x.invoiceNumber||x.number)))+1}tx.set(ref,{next:next+1,updatedAt:serverTimestamp()},{merge:true});return String(next).padStart(6,'0')})}
 async function ensureProfile(){const r=userRef();const s=await getDoc(r);if(!s.exists())await setDoc(r,{uid:user.uid,email:user.email||'',name:user.displayName||'',createdAt:serverTimestamp()},{merge:true})}
-async function loadAll(){if(!user)return;setSync('جارٍ المزامنة','');try{let is,cs;try{[is,cs]=await Promise.all([getDocs(sub('invoices')),getDocs(sub('customers'))]);}catch(e){throw e}invoices=is.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.createdAt?.toDate?.()||b.date||'').localeCompare(String(a.createdAt?.toDate?.()||a.date||'')));customers=cs.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'ar'));invoices=invoices.map(x=>calc(normalizeInvoice(x)));setSync(navigator.onLine?'تمت المزامنة':'محلي — بدون اتصال',navigator.onLine?'ok':'off')}catch(e){console.error(e);setSync('غير متصل','off');if(!invoices.length)toast('تعذر الاتصال الآن — حاول مرة أخرى عند توفر الإنترنت')}render()}
-function normalizeInvoice(x){const o={...blankInvoice(),...x};o.customer={...blankInvoice().customer,...(x.customer||{})};o.woods=Array.isArray(x.woods)&&x.woods.length?x.woods:[blankWood()];o.extraMaterials=Array.isArray(x.extraMaterials)?x.extraMaterials:[];o.manufacturing=Array.isArray(x.manufacturing)?x.manufacturing:(x.manufacturing?[{product:'التصنيع',price:x.manufacturing}]:[]);o.payments=Array.isArray(x.payments)?x.payments:[];o.discount=x.discount&&typeof x.discount==='object'?x.discount:{type:'amount',value:n(x.discount)};o.date=x.date||new Date().toISOString().slice(0,10);return o}
+async function loadAll(){if(!user)return;setSync('جارٍ المزامنة','');try{let is,cs;try{[is,cs]=await Promise.all([getDocs(sub('invoices')),getDocs(sub('customers'))]);}catch(e){throw e}invoices=is.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(b.createdAt?.toDate?.()||b.updatedAt?.toDate?.()||b.date||'').localeCompare(String(a.createdAt?.toDate?.()||a.updatedAt?.toDate?.()||a.date||'')));customers=cs.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>String(a.name||'').localeCompare(String(b.name||''),'ar'));invoices=invoices.map(x=>calc(normalizeInvoice(x)));setSync(navigator.onLine?'تمت المزامنة':'محلي — بدون اتصال',navigator.onLine?'ok':'off')}catch(e){console.error(e);setSync('غير متصل','off');if(!invoices.length)toast('تعذر الاتصال الآن — حاول مرة أخرى عند توفر الإنترنت')}render()}
+function normalizeInvoice(x){
+  const legacy=Array.isArray(x.rows)||Object.prototype.hasOwnProperty.call(x,'client')||Object.prototype.hasOwnProperty.call(x,'number')||Object.prototype.hasOwnProperty.call(x,'paid');
+  const o={...blankInvoice(),...x};
+  o.invoiceNumber=x.invoiceNumber||x.number||'';
+  o.date=x.date||new Date().toISOString().slice(0,10);
+
+  if(legacy){
+    const oldRows=Array.isArray(x.rows)?x.rows:[];
+    o.customer={...blankInvoice().customer,name:String(x.client||''),phone:String(x.phone||''),address:String(x.address||''),notes:String(x.clientNotes||'')};
+    o.woods=oldRows.length?oldRows.map(r=>({
+      count:r.count??r.quantity??'',
+      length:r.length??'',width:r.width??'',thickness:r.thickness??'',
+      unitPrice:r.unitPrice??r.price??'',quantityM3:r.volume??0,total:r.total??0,notes:r.notes??r.note??''
+    })): [blankWood()];
+    const oldMats=Array.isArray(x.materials)?x.materials:[];
+    o.extraMaterials=oldMats.map(r=>({name:r.name??'',quantity:r.quantity??r.count??1,unitPrice:r.unitPrice??r.price??'',total:r.total??0}));
+    o.manufacturing=(x.manufacturing!==undefined&&x.manufacturing!==null&&x.manufacturing!=='')?[{product:'التصنيع',price:x.manufacturing}]:[];
+    const paid=n(x.paid);
+    o.payments=paid>0?[{amount:paid,date:o.date,note:'دفعة مسجلة في الفاتورة القديمة'}]:[];
+    o.discount={type:'amount',value:0};
+    o.invoiceNotes=String(x.invoiceNotes||x.notes||'');
+    o.status=paid>0?'partial':'unpaid';
+  }else{
+    o.customer={...blankInvoice().customer,...(x.customer||{})};
+    o.woods=Array.isArray(x.woods)&&x.woods.length?x.woods:[blankWood()];
+    o.extraMaterials=Array.isArray(x.extraMaterials)?x.extraMaterials:[];
+    o.manufacturing=Array.isArray(x.manufacturing)?x.manufacturing:(x.manufacturing?[{product:'التصنيع',price:x.manufacturing}]:[]);
+    o.payments=Array.isArray(x.payments)?x.payments:[];
+    o.discount=x.discount&&typeof x.discount==='object'?x.discount:{type:'amount',value:n(x.discount)};
+  }
+  return o;
+}
 
 function nav(){return `<div class="bottom"><div class="bottom-inner">${[['home','🏠','الرئيسية'],['invoices','🧾','الفواتير'],['quick','⚡','الحساب السريع'],['customers','👥','العملاء'],['more','☰','المزيد']].map(x=>`<button class="nav ${activeView===x[0]?'active':''}" data-nav="${x[0]}"><span>${x[1]}</span>${x[2]}</button>`).join('')}</div></div>`}
 function shell(content){return `<div class="top"><div class="brand"><div><div class="logo">Roof ART</div><div class="tag">فن تصنيع الأخشاب · خبرة • إتقان • تميّز</div></div><div id="sync" class="sync">...</div></div></div><main class="app">${content}</main>${nav()}`}
